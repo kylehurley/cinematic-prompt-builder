@@ -789,9 +789,11 @@ body::before {
 }
 
 @media (max-width: 480px) {
+  :root { --gutter: 1.25rem; }
   .img-grid { grid-template-columns: repeat(3, 1fr); }
   .grid-expand { display: none !important; }
   .pack-cards { grid-template-columns: repeat(2, 1fr); }
+  .film-writeup-text { padding: 2rem var(--gutter); }
 }
 </style>
 </head>
