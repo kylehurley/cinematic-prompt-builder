@@ -950,7 +950,12 @@ body::before {
 </div>
 
 <script>
-const MULLER_FRAMES = Array.from({length: 42}, (_, i) => {
+const MULLER_FRAMES_THUMB = Array.from({length: 42}, (_, i) => {
+  const n = String(i + 1).padStart(2, '0');
+  return 'https://res.cloudinary.com/doqxbgft6/image/upload/w_400,q_auto,f_auto/v1777952730/Film_Pack_001_img_' + n + '.jpg';
+});
+
+const MULLER_FRAMES_FULL = Array.from({length: 42}, (_, i) => {
   const n = String(i + 1).padStart(2, '0');
   return 'https://res.cloudinary.com/doqxbgft6/image/upload/v1777952730/Film_Pack_001_img_' + n + '.jpg';
 });
@@ -1070,20 +1075,22 @@ function buildGrid(filmKey) {
   const film = FILMS[filmKey];
   const grid = document.getElementById('img-grid');
   grid.innerHTML = '';
-  const frames = filmKey === 'muller' ? MULLER_FRAMES : null;
+  const thumbs = filmKey === 'muller' ? MULLER_FRAMES_THUMB : null;
+  const fulls = filmKey === 'muller' ? MULLER_FRAMES_FULL : null;
 
   for (let i = 1; i <= film.frameCount; i++) {
     const frame = document.createElement('div');
-    if (frames) {
+    if (thumbs) {
       frame.className = 'img-frame';
-      const src = frames[i - 1];
+      const thumb = thumbs[i - 1];
+      const full = fulls[i - 1];
       const idx = i - 1;
       const img = document.createElement('img');
-      img.src = src;
+      img.src = thumb;
       img.alt = 'Frame ' + i;
       img.loading = 'lazy';
       frame.appendChild(img);
-      frame.addEventListener('click', () => openExpand(src, idx, frames));
+      frame.addEventListener('click', () => openExpand(full, idx, fulls));
     } else {
       frame.className = 'img-frame ph';
       frame.setAttribute('data-n', String(i).padStart(2,'0'));
