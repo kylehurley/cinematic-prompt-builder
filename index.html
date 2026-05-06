@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cinematic Prompt Builder</title>
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #080808;
+  --bg2: #0f0f0f;
+  --bg3: #181818;
+  --bg4: #222;
+  --border: rgba(255,255,255,0.08);
+  --border2: rgba(255,255,255,0.14);
+  --text: #ede8df;
+  --text2: #8a8580;
+  --text3: #484442;
+  --amber: #A77F49;
+  --amber2: #C49050;
+  --amber3: rgba(167,127,73,0.12);
+  --amber-nav: #C07818;
+  --red: rgba(160,50,50,0.10);
+  --red-border: rgba(180,70,70,0.30);
+  --red-text: #b07878;
+  --mono: 'DM Mono', monospace;
+  --sans: 'DM Sans', sans-serif;
+  --title: 'Titillium Web', sans-serif;
+  --nav-h: 38px;
+  --gutter: 2.5rem;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* grain */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.3;
+}
+
+/* ── FIXED TOP NAV ── */
+.top-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  background: rgba(8,8,8,0.96);
+  border-bottom: 0.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--gutter);
+  z-index: 500;
+  backdrop-filter: blur(8px);
+}
+
+.nav-item {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text3);
+  padding: 0;
+  height: var(--nav-h);
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  position: relative;
+}
+
+.nav-item.active {
+  color: var(--amber);
+}
+
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5px;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: var(--amber);
+}
+
+/* ── PAGE ── */
+.page {
+  padding-top: var(--nav-h);
+}
+
+.page-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* ── HERO HEADLINE ── */
+.hero {
+  padding: 4rem var(--gutter) 3.5rem;
+}
+
+.hero-border {
+  border-top: 0.5px solid var(--border);
+  width: 100%;
+}
+
+.hero-title {
+  font-family: var(--title);
+  font-size: clamp(36px, 5vw, 68px);
+  font-weight: 700;
+  color: var(--amber);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  margin-bottom: 1rem;
+}
+
+.hero-desc {
+  font-size: 14px;
+  color: var(--text);
+  font-weight: 300;
+  max-width: 520px;
+  line-height: 1.7;
+}
+
+/* ── FILM INFO + PACK SELECTOR ── */
+.film-row {
+  padding: 0 var(--gutter);
+  display: flex;
+  align-items: stretch;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.film-row-vdivider {
+  width: 0.5px;
+  background: var(--border);
+  flex-shrink: 0;
+  margin: 0 2.5rem;
+}
+
+.film-row-divider { display: none; }
+
+.film-info {
+  flex: 1;
+  padding: 2.25rem 0 1.25rem;
+}
+
+.pack-selector {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 2.25rem 0 1.25rem;
+}
+
+.film-title {
+  font-family: var(--title);
+  font-size: clamp(22px, 3vw, 38px);
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.6rem;
+}
+
+.film-credits {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text2);
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.film-credits span { color: var(--text3); margin-right: 0.5rem; }
+
+.film-tech {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text3);
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+}
+
+.pack-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.pack-selector-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+
+.pack-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  width: 100%;
+}
+
+.pack-card {
+  background: var(--bg3);
+  border: 0.5px solid var(--border);
+  border-radius: 5px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.pack-card:hover { border-color: var(--border2); }
+.pack-card.active { border: 1.5px solid var(--amber); background: var(--amber3); }
+.pack-card-title { font-size: 11px; font-weight: 500; color: var(--text); margin-bottom: 3px; line-height: 1.3; }
+.pack-card-meta { font-family: var(--mono); font-size: 9px; color: var(--text2); }
+
+/* ── HERO IMAGE ── */
+.hero-image-wrap {
+  margin: 0;
+  padding: 0;
+}
+
+.hero-image {
+  width: 100%;
+  overflow: hidden;
+  background: var(--bg3);
+  position: relative;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.9;
+}
+
+.hero-image-ph {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg3);
+}
+
+.hero-image-ph-text {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── IMAGE GRID ── */
+.grid-section {
+  padding: 0;
+  margin-top: 2px;
+  position: relative;
+}
+
+.img-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  background: var(--bg);
+}
+
+.img-frame {
+  aspect-ratio: 16/10;
+  background: var(--bg3);
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.img-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 1;
+  transition: opacity 0.15s;
+}
+
+.img-frame:hover img { opacity: 0.85; }
+
+.img-frame.ph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #181818, #111);
+}
+
+.img-frame.ph::after {
+  content: attr(data-n);
+  font-family: var(--mono);
+  font-size: 8px;
+  color: #252525;
+}
+
+/* IN-GRID EXPAND */
+.grid-expand {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background: #050505;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.grid-expand.visible {
+  display: flex;
+  animation: gridFadeIn 0.18s ease forwards;
+}
+
+.grid-expand.hiding {
+  animation: gridFadeOut 0.15s ease forwards;
+}
+
+.grid-expand img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: cover;
+  display: block;
+  animation: gridScaleIn 0.18s ease forwards;
+}
+
+@keyframes gridFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes gridFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes gridScaleIn {
+  from { transform: scale(0.98); }
+  to { transform: scale(1); }
+}
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #181818, #111);
+}
+
+.img-frame.ph::after {
+  content: attr(data-n);
+  font-family: var(--mono);
+  font-size: 8px;
+  color: #252525;
+}
+
+/* ── TOOL SECTION ── */
+.tool-section {
+  padding: 2rem var(--gutter) 0.75rem;
+  margin-top: 0;
+}
+
+.tool-header { margin-bottom: 1.5rem; }
+
+.tool-title {
+  font-family: var(--title);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.35rem;
+}
+
+.tool-sub {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tool-body-wrap {
+  border-top: 0.5px solid var(--border);
+  border-bottom: 0.5px solid var(--border);
+}
+
+.tool-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.4fr;
+  gap: 0;
+  align-items: stretch;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.tool-left { display: contents; }
+
+.tool-col {
+  padding: 1.5rem;
+  border-right: 0.5px solid var(--border);
+}
+
+.tool-col:first-child { padding-left: var(--gutter); }
+.tool-col:last-child { border-right: none; padding-right: var(--gutter); }
+
+.step-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 12px;
+  display: block;
+}
+
+/* PRESETS — single column list */
+.preset-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.preset-btn {
+  background: var(--bg3);
+  border: 0.5px solid var(--border);
+  border-radius: 6px;
+  padding: 11px 14px;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.preset-btn:hover { border-color: var(--border2); }
+.preset-btn.active { border: 1.5px solid var(--amber); background: var(--amber3); }
+.preset-num { font-family: var(--mono); font-size: 9px; color: var(--text3); letter-spacing: 0.06em; white-space: nowrap; }
+.preset-btn.active .preset-num { color: var(--amber); }
+.preset-name { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.3; }
+
+/* LAYERS — single column list */
+.layer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.layer-card {
+  background: var(--bg3);
+  border: 0.5px solid var(--border);
+  border-radius: 6px;
+  padding: 11px 12px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+  text-align: left;
+}
+
+.layer-card:hover { border-color: var(--border2); }
+.layer-card.active { border: 1.5px solid var(--amber2); background: var(--amber3); }
+.layer-letter { font-family: var(--mono); font-size: 9px; color: var(--amber); display: block; margin-bottom: 4px; font-weight: 500; letter-spacing: 0.08em; }
+.layer-name { font-size: 13px; font-weight: 500; color: var(--text); display: block; margin-bottom: 3px; }
+.layer-desc { font-size: 10px; color: var(--text2); font-family: var(--mono); line-height: 1.45; }
+
+/* RIGHT COLUMN */
+.tool-right {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: sticky;
+  top: calc(var(--nav-h) + 1.5rem);
+  align-self: stretch;
+}
+
+.tool-right-top {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.75rem;
+}
+
+.right-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.input-hint {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text2);
+  line-height: 1.65;
+  padding-left: 10px;
+  border-left: 1.5px solid var(--border2);
+  margin-bottom: 10px;
+}
+
+.details-textarea {
+  width: 100%;
+  background: var(--bg3);
+  border: 0.5px solid var(--border);
+  border-radius: 6px;
+  padding: 12px 14px;
+  font-size: 13px;
+  font-family: var(--sans);
+  font-weight: 300;
+  color: var(--text);
+  resize: none;
+  flex: 1;
+  min-height: 160px;
+  line-height: 1.7;
+  transition: border-color 0.15s;
+}
+
+.details-textarea::placeholder { color: var(--text3); }
+.details-textarea:focus { outline: none; border-color: var(--amber); }
+
+.tool-divider { display: none; }
+
+.generate-btn {
+  width: 100%;
+  padding: 15px;
+  background: var(--amber);
+  border: none;
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1a0e00;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.generate-btn:hover:not(:disabled) { background: var(--amber2); }
+
+.generate-btn:disabled {
+  background: var(--bg3);
+  color: var(--text3);
+  cursor: default;
+  border: 0.5px solid var(--border);
+}
+
+/* OUTPUT */
+.output-section {
+  display: none;
+  border-top: 0.5px solid var(--border);
+}
+
+.output-section.visible { display: block; }
+
+.output-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.output-box {
+  background: var(--bg);
+  border-right: 0.5px solid var(--border);
+  padding: 1.5rem var(--gutter);
+}
+
+.output-box:last-of-type { border-right: none; }
+.output-box.neg { background: var(--bg); }
+
+.output-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.output-tag { font-family: var(--mono); font-size: 9px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--text3); }
+.output-box.neg .output-tag { color: var(--red-text); }
+
+.copy-btn {
+  font-family: var(--mono);
+  font-size: 10px;
+  background: transparent;
+  border: 0.5px solid var(--border2);
+  border-radius: 4px;
+  padding: 3px 10px;
+  cursor: pointer;
+  color: var(--text2);
+  letter-spacing: 0.06em;
+  transition: all 0.15s;
+}
+
+.copy-btn:hover { border-color: var(--amber); color: var(--amber2); }
+.copy-btn.copied { color: #639922; border-color: #3B6D11; }
+
+.output-divider { border: none; border-top: 0.5px solid var(--border); margin-bottom: 10px; }
+.output-box.neg .output-divider { border-color: var(--border); }
+
+.output-text {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text);
+  line-height: 1.85;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.output-box.neg .output-text { color: #c09898; }
+
+.copy-all {
+  display: none;
+  width: 100%;
+  padding: 15px var(--gutter);
+  background: var(--amber);
+  border: none;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1a0e00;
+  cursor: pointer;
+  transition: background 0.15s;
+  text-align: center;
+}
+
+.copy-all.visible { display: block; }
+.copy-all:hover { background: var(--amber2); }
+.copy-all.copied { background: #2a4a1a; color: #8ab86a; }
+
+/* ── FILM WRITEUP + EXAMPLE GALLERY ── */
+.film-writeup {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 0.5px solid var(--border);
+}
+
+.film-writeup-text {
+  flex: 0 0 50%;
+  padding: 2.5rem calc(var(--gutter) + 1.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.film-writeup-text p {
+  font-size: 14px;
+  color: var(--text2);
+  font-weight: 300;
+  line-height: 1.8;
+  max-width: 520px;
+  width: 100%;
+}
+
+.film-writeup-divider {
+  width: 0.5px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+.film-writeup-gallery {
+  flex: 0 0 50%;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg3);
+}
+
+/* 16:9 ratio enforced via padding trick on a wrapper */
+.film-writeup-gallery-inner {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+}
+
+.gallery-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.gallery-slide.active { opacity: 1; }
+
+.gallery-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-placeholder-text {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.gallery-dots {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 10;
+}
+
+.gallery-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  cursor: pointer;
+  transition: background 0.2s;
+  border: none;
+  padding: 0;
+}
+
+.gallery-dot.active { background: rgba(255,255,255,0.8); }
+
+/* ── FOOTER ── */
+.site-footer {
+  padding: 1.5rem var(--gutter);
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text3);
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 900px) {
+  .film-row { flex-direction: column; }
+  .film-row-vdivider { display: none; }
+  .film-info { padding: 2.25rem 0 0.75rem; }
+  .pack-selector { width: 100%; padding: 1rem 0 1.5rem; }
+  .pack-cards { grid-template-columns: repeat(2, 1fr); }
+  .film-writeup { flex-direction: column; }
+  .film-writeup-divider { display: none; }
+  .film-writeup-text { flex: none; width: 100%; }
+  .film-writeup-gallery { flex: none; width: 100%; min-height: 200px; }
+  .img-grid { grid-template-columns: repeat(6, 1fr); }
+  .tool-body { grid-template-columns: 1fr; }
+  .tool-col {
+    border-right: none;
+    border-bottom: 0.5px solid var(--border);
+    padding-left: var(--gutter) !important;
+    padding-right: var(--gutter) !important;
+  }
+  .tool-col:last-child { border-bottom: none; }
+  .tool-right { position: static; }
+  .output-grid { grid-template-columns: 1fr; }
+  .output-box { border-right: none; border-bottom: 0.5px solid var(--border); }
+  .output-box:last-of-type { border-bottom: none; }
+}
+
+@media (max-width: 480px) {
+  .img-grid { grid-template-columns: repeat(3, 1fr); }
+  .grid-expand { display: none !important; }
+  .pack-cards { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- FIXED NAV -->
+<nav class="top-nav">
+  <span class="nav-item active">Cinematic Prompt Builder</span>
+</nav>
+
+<div class="page">
+
+  <!-- HERO HEADLINE -->
+  <div class="page-inner">
+  <section class="hero">
+    <h1 class="hero-title">Build a Prompt<br>from a Film.</h1>
+    <p class="hero-desc">Prompts built from real stocks, real equipment, real cinematographers. Specific enough to get you to the visual world you already have in your head.</p>
+  </section>
+  </div>
+
+  <div class="hero-border"></div>
+
+  <!-- FILM INFO + PACK SELECTOR -->
+  <div class="film-row">
+    <div class="film-info">
+      <h2 class="film-title" id="film-title">To Live and Die in L.A.</h2>
+      <p class="film-credits"><span>1985</span> <span>Dir:</span> William Friedkin <span style="margin-left:1rem;">DP:</span> Robby Müller</p>
+      <p class="film-tech" id="film-tech">Fuji A125T 8511 · Arriflex 35 BL3 · Zeiss prime lenses · 35mm spherical 1.85:1</p>
+    </div>
+    <div class="film-row-vdivider"></div>
+    <div class="pack-selector">
+      <span class="pack-selector-label">Select film</span>
+      <div class="pack-cards">
+        <div class="pack-card active" data-film="muller">
+          <div class="pack-card-title">To Live and Die in L.A.</div>
+          <div class="pack-card-meta">DP: Robby Müller · 1985</div>
+        </div>
+        <div class="pack-card" data-film="p02">
+          <div class="pack-card-title">Film Pack 02</div>
+          <div class="pack-card-meta">coming soon</div>
+        </div>
+        <div class="pack-card" data-film="p03">
+          <div class="pack-card-title">Film Pack 03</div>
+          <div class="pack-card-meta">coming soon</div>
+        </div>
+        <div class="pack-card" data-film="p04">
+          <div class="pack-card-title">Film Pack 04</div>
+          <div class="pack-card-meta">coming soon</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMAGE GRID - full bleed -->
+  <div class="grid-section">
+    <div class="grid-expand" id="grid-expand">
+      <img id="grid-expand-img" src="" alt="">
+    </div>
+    <div class="img-grid" id="img-grid"></div>
+  </div>
+
+  <!-- FILM WRITEUP + EXAMPLE GALLERY -->
+  <div class="film-writeup" id="film-writeup">
+    <div class="film-writeup-text">
+      <p>Robby Müller brought a European eye to mid-80s Los Angeles and found something nobody else was seeing — the city as surveillance subject, not backdrop. No fill light, no golden hour, color slightly wrong in a way that feels more honest than any correction would. Fuji A125T tungsten stock on an Arriflex 35 BL3, shot the way Müller always worked: the world is already lit, the camera just watches.</p>
+    </div>
+    <div class="film-writeup-divider"></div>
+    <div class="film-writeup-gallery" id="gallery">
+      <div class="film-writeup-gallery-inner">
+        <div class="gallery-slide active">
+          <div class="gallery-placeholder">
+            <span class="gallery-placeholder-text">Example images — coming soon</span>
+          </div>
+        </div>
+        <div class="gallery-slide">
+          <div class="gallery-placeholder">
+            <span class="gallery-placeholder-text">Example 02</span>
+          </div>
+        </div>
+        <div class="gallery-slide">
+          <div class="gallery-placeholder">
+            <span class="gallery-placeholder-text">Example 03</span>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-dots" id="gallery-dots">
+        <button class="gallery-dot active" data-slide="0"></button>
+        <button class="gallery-dot" data-slide="1"></button>
+        <button class="gallery-dot" data-slide="2"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOOL -->
+  <div class="page-inner">
+  <section class="tool-section">
+    <div class="tool-header">
+      <h2 class="tool-title">Build your prompt</h2>
+      <p class="tool-sub">Select scene · processing layer · add subject · generate</p>
+    </div>
+  </section>
+  </div>
+
+    <div class="tool-body-wrap">
+    <div class="tool-body">
+
+      <div class="tool-col">
+        <span class="step-label">02 — Scene preset</span>
+        <div class="preset-list" id="preset-grid"></div>
+      </div>
+
+      <div class="tool-col">
+        <span class="step-label">03 — Processing layer</span>
+        <div class="layer-list" id="layer-grid"></div>
+      </div>
+
+      <div class="tool-col tool-right">
+        <div class="tool-right-top">
+          <span class="right-label">04 — Your subject and scene <span style="color:var(--text3);font-size:8px;font-weight:400;letter-spacing:0.04em;">(optional)</span></span>
+          <p class="input-hint">Describe your characters, clothing, props, and action. The preset handles light, color, and camera. You handle what's in the frame.</p>
+          <textarea class="details-textarea" id="details-input" placeholder="e.g. a man in a worn leather jacket and a woman in a white satin dress arguing in a doorway, her arms crossed..."></textarea>
+        </div>
+        <button class="generate-btn" id="generate-btn" disabled>Select a preset and layer</button>
+      </div>
+
+    </div>
+    </div>
+
+    <!-- OUTPUT — full width below divider -->
+    <div class="output-section" id="output-section">
+      <div class="output-grid">
+        <div class="output-box">
+          <div class="output-top">
+            <span class="output-tag">Positive prompt</span>
+            <button class="copy-btn" id="copy-pos">Copy</button>
+          </div>
+          <hr class="output-divider">
+          <p class="output-text" id="pos-text"></p>
+        </div>
+        <div class="output-box neg">
+          <div class="output-top">
+            <span class="output-tag">Negative prompt</span>
+            <button class="copy-btn" id="copy-neg">Copy</button>
+          </div>
+          <hr class="output-divider">
+          <p class="output-text" id="neg-text"></p>
+        </div>
+      </div>
+      <button class="copy-all" id="copy-all">Copy both prompts together</button>
+    </div>
+
+    <div style="padding-bottom:4rem;"></div>
+
+  <footer class="site-footer">Cinematic Prompt Builder</footer>
+
+</div>
+
+<script>
+const MULLER_FRAMES = Array.from({length: 42}, (_, i) => {
+  const n = String(i + 1).padStart(2, '0');
+  return 'https://res.cloudinary.com/doqxbgft6/image/upload/v1777952730/Film_Pack_001_img_' + n + '.jpg';
+});
+
+const PLACEHOLDER_PRESETS = [
+  { num:"01", name:"Exterior day", text:"[Pack coming soon]", neg:"[Pack coming soon]" },
+  { num:"02", name:"Interior night", text:"[Pack coming soon]", neg:"[Pack coming soon]" },
+  { num:"03", name:"Industrial", text:"[Pack coming soon]", neg:"[Pack coming soon]" },
+  { num:"04", name:"Portrait", text:"[Pack coming soon]", neg:"[Pack coming soon]" },
+  { num:"05", name:"Crowd", text:"[Pack coming soon]", neg:"[Pack coming soon]" },
+  { num:"06", name:"Vehicle", text:"[Pack coming soon]", neg:"[Pack coming soon]" },
+  { num:"07", name:"Dusk", text:"[Pack coming soon]", neg:"[Pack coming soon]" },
+  { num:"08", name:"Silhouette", text:"[Pack coming soon]", neg:"[Pack coming soon]" },
+  { num:"09", name:"Action", text:"[Pack coming soon]", neg:"[Pack coming soon]" }
+];
+
+const FILMS = {
+  muller: {
+    title: "To Live and Die in L.A.",
+    credits: "<span>1985</span> <span>Dir:</span> William Friedkin <span style='margin-left:1rem;'>DP:</span> Robby Müller",
+    tech: "Fuji A125T 8511 · Arriflex 35 BL3 · Zeiss prime lenses · 35mm spherical 1.85:1",
+    frameCount: 42,
+    heroFrame: 'https://res.cloudinary.com/doqxbgft6/image/upload/v1778015919/Film_Pack_001_000.jpg',
+    presets: [
+      { num:"01", name:"Industrial LA exterior",
+        text:"Robby Müller, To Live and Die in L.A. 1985, 35mm spherical 1.85:1, Arriflex 35 BL3, Fuji A125T 8511 tungsten negative. Long telephoto 200mm+, power lines and palm silhouettes compressed into flat graphic lattice. Dead purple-gray smog haze sky. Color drained near monochrome in midtones, warm rust only in low foreground. Camera locked off, surveillance feel. Mid-day sun, no golden hour. Anti-glamour urban realism, observational distance.",
+        neg:"No golden hour, no romantic sunset, no warm glowing light, no blue sky, no beauty lighting, no Instagram aesthetics, no HDR, no oversaturation, no sharp digital clarity, no modern color grade, no studio lighting, no fill light, no glamour, no clean edges." },
+      { num:"02", name:"Street level observational",
+        text:"Robby Müller, To Live and Die in L.A. 1985, 35mm spherical 1.85:1, Arriflex 35 BL3, Fuji A125T 8511 tungsten negative. Fluid dolly or pan tracking subjects through crowd. Strong late-afternoon sidelight from left, subjects slightly underexposed against it. Background signage reads brick-red and faded, never saturated. Documentary grammar, European eye on American street life. No fill light. The world is already lit.",
+        neg:"No studio lighting, no fill light, no posed photography, no clean commercial look, no saturated primaries, no Miami Vice palette, no fashion photography aesthetics, no sharp digital sharpening, no modern color grading, no HDR." },
+      { num:"03", name:"Modernist interior",
+        text:"Robby Müller, To Live and Die in L.A. 1985, 35mm spherical 1.85:1, Arriflex 35 BL3, Fuji A125T 8511 tungsten negative. Dark interior, floor-to-ceiling industrial grid windows, exterior blows to cool blue-white. Single illuminated subject or object as compositional pin in foreground. Zero attempt to balance exposure. Interior darkness accepted completely. Locked off. Architecture and shadow do the work.",
+        neg:"No balanced exposure, no fill light, no warm interior lighting, no cozy atmosphere, no luxury interior aesthetics, no sharp detail in shadows, no HDR shadow recovery." },
+      { num:"04", name:"Night desert road",
+        text:"Robby Müller, To Live and Die in L.A. 1985, 35mm spherical 1.85:1, Arriflex 35 BL3, Fuji A125T 8511 tungsten negative. Car-mounted low angle shot on road surface. Double yellow lines as vanishing perspective. Deep indigo sky, not black, not purple, actual indigo. Near zero shadow detail. Small amber road markers only warm tones. Organic grain visible. Total commitment to darkness.",
+        neg:"No bright moonlight, no dramatic lighting, no colorful night sky, no neon, no city glow, no HDR night photography, no purple sky, no lifted shadows." },
+      { num:"05", name:"The Threshold",
+        text:"Robby Müller, To Live and Die in L.A. 1985, 35mm spherical 1.85:1, Arriflex 35 BL3, Fuji A125T 8511 tungsten negative. Two opposing practical light sources, deep saturated red ambient from one direction, cool green point source from opposite. Glass partition divides color zones. Skin shifts to sickly green or deep red by position. Shadows absolute black. Maximum saturation only within source zones. Dangerous, transactional.",
+        neg:"No cyberpunk aesthetics, no neon sign look, no nightclub photography, no pink or purple tones, no blue tones, no neutral white light, no clean skin tones, no beauty lighting." },
+      { num:"06", name:"Desert exterior",
+        text:"Robby Müller, To Live and Die in L.A. 1985, 35mm spherical 1.85:1, Arriflex 35 BL3, Fuji A125T 8511 tungsten negative. Joshua Tree terrain. Desert reads pale and bleached not warm and golden, cool lavender-rose palette. Deep focus, horizon sharp. Near pastel color rendering. Sun harsh, flat, merciless. No romanticization of landscape.",
+        neg:"No warm golden desert tones, no romantic landscape photography, no travel photography aesthetics, no saturated blue sky, no golden hour, no warm orange sand." },
+      { num:"07", name:"Dusk portrait",
+        text:"Robby Müller, To Live and Die in L.A. 1985, 35mm spherical 1.85:1, Arriflex 35 BL3, Fuji A125T 8511 tungsten negative. Expose for sky, purple to amber gradient. Face falls to near darkness, one catch light in the eye only. Face reads as texture not portrait. Sky does the storytelling. Subject secondary to atmosphere.",
+        neg:"No beauty portrait lighting, no fill light on face, no reflector, no golden hour warmth on skin, no glamour, no sharp facial detail, no studio portrait look." },
+      { num:"08", name:"Warehouse silhouette",
+        text:"Robby Müller, To Live and Die in L.A. 1985, 35mm spherical 1.85:1, Arriflex 35 BL3, Fuji A125T 8511 tungsten negative. Dark interior, single door or bay opening as only light source. Figure as pure silhouette or near-silhouette in doorframe. 90% of frame can be absolute black, commit to it. Corrugated metal, concrete surfaces. The door is the light.",
+        neg:"No fill light, no ambient room light, no lifted shadows, no detail in dark areas, no HDR, no multiple light sources, no warm interior." },
+      { num:"09", name:"Pursuit",
+        text:"Robby Müller, To Live and Die in L.A. 1985, 35mm spherical 1.85:1, Arriflex 35 BL3, Fuji A125T 8511 tungsten negative. Midday flat California sun, no shadows, bleached palette. Subject vehicle in hard lateral motion, rear wheel lift or tire smoke, organic motion blur. Camera locked or near-locked on follow vehicle. Chaos belongs to subject not lens. No hero framing. Documentary witness.",
+        neg:"No heroic framing, no dramatic lighting, no golden hour, no cinematic lens flare, no Michael Bay aesthetics, no sharp CGI quality, no video game render." }
+    ]
+  },
+  p02: { title:"Film Pack 02", credits:"", tech:"coming soon", frameCount:42, heroFrame:null, presets:PLACEHOLDER_PRESETS },
+  p03: { title:"Film Pack 03", credits:"", tech:"coming soon", frameCount:42, heroFrame:null, presets:PLACEHOLDER_PRESETS },
+  p04: { title:"Film Pack 04", credits:"", tech:"coming soon", frameCount:42, heroFrame:null, presets:PLACEHOLDER_PRESETS }
+};
+
+const LAYERS = [
+  { letter:"A", name:"Negative scan", desc:"Raw log, no grade",
+    text:"Processing: Clean 2K scan of original camera negative, flat log color space, no digital noise reduction, no sharpening. Grain structure fully resolved, original silver halide crystals present. The pure photochemical record before any human interpretation. Maximum shadow and highlight detail. Color is neutral and unmanaged.",
+    neg:"No color grading, no timing, no sharpening, no noise reduction, no crushed blacks, no saturated color, no contrast push, no stylization." },
+  { letter:"B", name:"Release print", desc:"Theatrical, 3rd to 4th gen",
+    text:"Processing: Theatrical release print, third or fourth generation from original negative. Greens push slightly yellow, reds become brick and muted, blues cool further toward gray. Contrast built through duplication generations. Grain coarser and more uniform. Gate weave, image breathes. This is the version someone saw in a theater.",
+    neg:"No clean digital transfer, no modern restoration, no noise reduction, no sharpening, no HDR, no Dolby Vision grade." },
+  { letter:"C", name:"Telecine", desc:"Film to tape, CRT era",
+    text:"Processing: Telecine transfer, film-to-tape, CRT monitor color space. Slight video softness on top of film grain, two textures fighting each other. Contrast reduced for television broadcast, blacks lifted to legal video levels. Flesh tones push toward video warmth. This is how a generation remembered this film.",
+    neg:"No clean digital image, no modern transfer, no 4K restoration, no sharp detail, no Blu-ray quality." },
+  { letter:"D", name:"Broadcast transfer", desc:"Analog cable, UHF transmission",
+    text:"Processing: Analog broadcast transmission, cable or UHF, mid-1980s to early 1990s. The image has traveled through multiple tape generations and transmission stages. Noise floor rises noticeably in dark areas — grain and video noise coexist. Color saturation compresses further, reds and skin tones bleed slightly at edges. Slight temporal warble from tape generation loss. Contrast is flat, almost milky in the highlights. This is the version someone caught accidentally at 11pm on USA Network, half asleep on the couch, and never forgot.",
+    neg:"No clean image, no sharp detail, no modern transfer, no film grain without video noise, no pure blacks, no saturated color, no HDR, no digital clarity of any kind." }
+];
+
+let selectedPreset = null;
+let selectedLayer = null;
+let currentFilm = 'muller';
+
+// IN-GRID EXPAND
+const gridExpand = document.getElementById('grid-expand');
+const gridExpandImg = document.getElementById('grid-expand-img');
+let expandIndex = -1;
+let expandFrames = [];
+
+function openExpand(src, index, frames) {
+  expandFrames = frames;
+  expandIndex = index;
+  gridExpandImg.src = src;
+  gridExpand.classList.remove('hiding');
+  gridExpand.classList.add('visible');
+}
+
+function stepExpand(dir) {
+  expandIndex = (expandIndex + dir + expandFrames.length) % expandFrames.length;
+  gridExpandImg.src = expandFrames[expandIndex];
+}
+
+function closeExpand() {
+  gridExpand.classList.add('hiding');
+  gridExpand.addEventListener('animationend', () => {
+    gridExpand.classList.remove('visible', 'hiding');
+    gridExpandImg.src = '';
+    expandIndex = -1;
+  }, { once: true });
+}
+
+gridExpand.addEventListener('click', closeExpand);
+
+document.addEventListener('keydown', e => {
+  if (!gridExpand.classList.contains('visible')) return;
+  if (e.key === 'Escape') closeExpand();
+  if (e.key === 'ArrowRight') { e.preventDefault(); stepExpand(1); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); stepExpand(-1); }
+});
+
+// BUILD GRID
+function buildGrid(filmKey) {
+  const film = FILMS[filmKey];
+  const grid = document.getElementById('img-grid');
+  grid.innerHTML = '';
+  const frames = filmKey === 'muller' ? MULLER_FRAMES : null;
+
+  for (let i = 1; i <= film.frameCount; i++) {
+    const frame = document.createElement('div');
+    if (frames) {
+      frame.className = 'img-frame';
+      const src = frames[i - 1];
+      const idx = i - 1;
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = 'Frame ' + i;
+      img.loading = 'lazy';
+      frame.appendChild(img);
+      frame.addEventListener('click', () => openExpand(src, idx, frames));
+    } else {
+      frame.className = 'img-frame ph';
+      frame.setAttribute('data-n', String(i).padStart(2,'0'));
+    }
+    grid.appendChild(frame);
+  }
+  setTimeout(() => {}, 0);
+}
+
+// BUILD PRESETS
+function buildPresets(filmKey) {
+  const presetGrid = document.getElementById('preset-grid');
+  presetGrid.innerHTML = '';
+  selectedPreset = null;
+  FILMS[filmKey].presets.forEach(p => {
+    const btn = document.createElement('button');
+    btn.className = 'preset-btn';
+    btn.innerHTML = '<span class="preset-num">' + p.num + '</span><span class="preset-name">' + p.name + '</span>';
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedPreset = p;
+      updateBtn();
+    });
+    presetGrid.appendChild(btn);
+  });
+  updateBtn();
+}
+
+// FILM SELECTOR
+document.querySelectorAll('.pack-card[data-film]').forEach(card => {
+  card.addEventListener('click', () => {
+    const filmKey = card.getAttribute('data-film');
+    if (!FILMS[filmKey]) return;
+    document.querySelectorAll('.pack-card').forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+    currentFilm = filmKey;
+    const film = FILMS[filmKey];
+    document.getElementById('film-title').textContent = film.title;
+    document.querySelector('.film-credits').innerHTML = film.credits;
+    document.getElementById('film-tech').textContent = film.tech;
+    buildGrid(filmKey);
+    buildPresets(filmKey);
+    selectedLayer = null;
+    document.querySelectorAll('.layer-card').forEach(c => c.classList.remove('active'));
+    updateBtn();
+  });
+});
+
+// LAYERS
+const layerGrid = document.getElementById('layer-grid');
+LAYERS.forEach(l => {
+  const card = document.createElement('div');
+  card.className = 'layer-card';
+  card.innerHTML = '<span class="layer-letter">LAYER ' + l.letter + '</span><span class="layer-name">' + l.name + '</span><span class="layer-desc">' + l.desc + '</span>';
+  card.addEventListener('click', () => {
+    document.querySelectorAll('.layer-card').forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+    selectedLayer = l;
+    updateBtn();
+  });
+  layerGrid.appendChild(card);
+});
+
+// GENERATE
+const generateBtn = document.getElementById('generate-btn');
+const outputSection = document.getElementById('output-section');
+const posText = document.getElementById('pos-text');
+const negText = document.getElementById('neg-text');
+const copyPos = document.getElementById('copy-pos');
+const copyNeg = document.getElementById('copy-neg');
+const copyAll = document.getElementById('copy-all');
+const detailsInput = document.getElementById('details-input');
+
+function updateBtn() {
+  if (selectedPreset && selectedLayer) {
+    generateBtn.disabled = false;
+    generateBtn.textContent = 'Generate — ' + selectedPreset.name + ' + ' + selectedLayer.name;
+  } else {
+    generateBtn.disabled = true;
+    generateBtn.textContent = 'Select a preset and layer';
+  }
+}
+
+generateBtn.addEventListener('click', () => {
+  const details = detailsInput.value.trim();
+  let pos = selectedPreset.text + '\n\n' + selectedLayer.text;
+  if (details) pos += '\n\nScene: ' + details;
+  const neg = selectedPreset.neg + ' ' + selectedLayer.neg;
+  posText.textContent = pos;
+  negText.textContent = neg;
+  outputSection.classList.add('visible');
+  copyAll.classList.add('visible');
+  [copyPos, copyNeg].forEach(b => { b.textContent = 'Copy'; b.classList.remove('copied'); });
+  copyAll.textContent = 'Copy both prompts together';
+  copyAll.classList.remove('copied');
+});
+
+function makeCopy(btn, getFn) {
+  btn.addEventListener('click', () => {
+    navigator.clipboard.writeText(getFn()).then(() => {
+      btn.textContent = 'Copied';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+    });
+  });
+}
+
+makeCopy(copyPos, () => posText.textContent);
+makeCopy(copyNeg, () => negText.textContent);
+copyAll.addEventListener('click', () => {
+  const combined = 'POSITIVE PROMPT:\n' + posText.textContent + '\n\nNEGATIVE PROMPT:\n' + negText.textContent;
+  navigator.clipboard.writeText(combined).then(() => {
+    copyAll.textContent = 'Copied both';
+    copyAll.classList.add('copied');
+    setTimeout(() => { copyAll.textContent = 'Copy both prompts together'; copyAll.classList.remove('copied'); }, 2000);
+  });
+});
+
+// GALLERY SLIDESHOW
+(function() {
+  const gallery = document.getElementById('gallery');
+  if (!gallery) return;
+  const slides = gallery.querySelectorAll('.gallery-slide');
+  const dots = gallery.querySelectorAll('.gallery-dot');
+  let current = 0;
+  let timer;
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      clearInterval(timer);
+      goTo(parseInt(dot.dataset.slide));
+      timer = setInterval(() => goTo(current + 1), 4000);
+    });
+  });
+
+  if (slides.length > 1) {
+    timer = setInterval(() => goTo(current + 1), 4000);
+  }
+})();
+
+// INIT
+buildGrid('muller');
+buildPresets('muller');
+</script>
+</body>
+</html>
