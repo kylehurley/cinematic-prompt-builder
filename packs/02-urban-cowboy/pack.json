@@ -1,1 +1,110 @@
+{
+  "id": "urban-cowboy",
+  "title": "Urban Cowboy",
+  "year": "1980",
+  "director": "James Bridges",
+  "dp": "Reynaldo Villalobos",
+  "tech": "Eastman Kodak 5247 100T [inferred] · Panavision anamorphic 2x squeeze · 35mm anamorphic 2.35:1 · Movielab Hollywood",
+  "writeup": "Urban Cowboy (1980), shot by first-time feature DP Reynaldo Villalobos with operator John Toll, merges studio anamorphic scope with working-class semi-documentary naturalism in a way that no other film of its period attempts. Framed in 35mm Panavision anamorphic at 2.35:1 and processed at Movielab Hollywood, the film uses its wide format not for epic grandeur but for social density and geographic truth — the layered horizontal crowd of a real honky-tonk, couples in relational tension across a wide frame, human figures dwarfed by flat Texas land and Gulf Coast refinery scale. Villalobos' stated philosophy — making light look like there is no light — is visible in every frame: Gilley's interiors driven entirely by practicals and beer-sign spill at 2800–3400K; trailer scenes lit by the actual lamps that came with the unit; refinery exteriors in raw noon sun with no fill, no correction, no modification. The palette runs on amber tungsten, nicotine brown, denim blue, sickly sodium-vapor orange, and sun-washed ochre — earthy, worn-in, and regionally specific.",
+  "frames": {
+    "count": 42,
+    "thumbBase": "https://res.cloudinary.com/doqxbgft6/image/upload/w_400,q_auto,f_auto/v1777952730/Film_Pack_002_img_",
+    "fullBase": "https://res.cloudinary.com/doqxbgft6/image/upload/v1777952730/Film_Pack_002_img_",
+    "ext": ".jpg",
+    "pad": 2,
+    "columns": 6,
+    "mobileColumns": 2
+  },
+  "gallery": [
+    { "placeholder": "Example images — coming soon" },
+    { "placeholder": "Example 02" },
+    { "placeholder": "Example 03" }
+  ],
+  "presets": [
+    {
+      "num": "01",
+      "name": "Gilley's Amber",
+      "text": "Reynaldo Villalobos, Urban Cowboy 1980, 35mm Panavision anamorphic 2.35:1, Eastman Kodak 5247 100T [inferred], Movielab Hollywood. Massive Texas honky-tonk interior, real location, daytime shoot manufactured into nightclub atmosphere entirely through practical sources. Dominant temperature 2800–3400K tungsten bouncing off warm wood surfaces and returning as clean amber — light has volume, haze, and space to diffuse elegantly. Atmospheric cigarette smoke diffusing overhead practicals into soft columns, creating haze-bloom in background that lifts exposure without flattening foreground contrast. Lone Star Beer neon (red-orange), Coors neon (pink-magenta), and Budweiser neon (red) as color temperature counterpoints to tungsten ambient. Hat brim geometry as primary compositional rhythm across the horizontal anamorphic field — foreground brims crushed to black, mid-ground faces partially resolved, background crowd falling into warm silhouette. Anamorphic depth compression stacking crowd into horizontal plane; oval bokeh on background neon signs and ceiling fixtures. 5247 shadow grain dense in dark crowd zones, luminance grain visible in haze bloom.",
+      "neg": "Clean three-point studio lighting, fill-heavy glamour photography, disco sheen, oversaturated neon poster palette, sharp digital corner clarity, high-contrast expressionism, cold color temperature, sparse environment, posed subjects, fashion-editorial lighting, circular bokeh, post-2000 nightclub aesthetic."
+    },
+    {
+      "num": "02",
+      "name": "The Bull Pit",
+      "text": "Reynaldo Villalobos, Urban Cowboy 1980, 35mm Panavision anamorphic 2.35:1, Eastman Kodak 5247 100T [inferred], Movielab Hollywood. Mechanical bull arena inside Gilley's — single overhead tungsten spot at 3200–3400K as sole key, no fill, crowd in deliberate near-silhouette. Five-to-seven stop contrast range: rider's forearms, hands, and costume are the only fully exposed zone, shoulder highlights blooming slightly; shadow regions in crowd show heavy luminance grain consistent with 5247 pushed in low light — clumping in dark mid-tones, not fine. Coors neon (pink-magenta) and Budweiser neon (red partial) as background color temperature counterpoints to tungsten key — visible as bokeh smears in upper background, never as fill sources. Anamorphic oval bokeh on background light points; horizontal lens geometry compressing crowd depth. Fast anamorphic stop approximately T2.8–T4: rider resolved, crowd soft but not destroyed. Red sequin or saturated costume fabric burning hot under tungsten — a 5247 characteristic with red under tungsten at this stop range.",
+      "neg": "Clean arena sports photography, rim-lit action hero isolation, theatrical spotlight drama, even crowd illumination, sharp hyper-real digital clarity, cold or blue-shifted overall temperature, fine digital noise rather than chunky shadow grain, orange-teal grading, handheld instability, modern nightclub aesthetic, circular bokeh."
+    },
+    {
+      "num": "03",
+      "name": "Dance Floor Geometry",
+      "text": "Reynaldo Villalobos, Urban Cowboy 1980, 35mm Panavision anamorphic 2.35:1, Eastman Kodak 5247 100T [inferred], Movielab Hollywood. Gilley's dance floor — overhead cool fixture at 4000–4500K creating direct illumination on tile floor surface, reflecting back upward as below-lit effect on dancer feet and lower bodies. Left-to-right temperature gradient: warm amber or saturated red stage-left PAR (2200–3000K, sometimes fully saturated red gel) transitioning to cool overhead center-right — a horizontal color band readable across the full anamorphic width. Anamorphic framing enabling three-couple readability simultaneously at dance floor distance without pulling back to extreme long shot. Atmospheric haze diffusing overhead spots into soft columns above the floor. Hat brim geometry as primary horizontal rhythm. 5247 shadow grain heavy in wall and ceiling zones; floor reflection zone cleaner.",
+      "neg": "Music video movement, aggressive rack focus, editorial sharpness, cold or blue-shifted overall temperature, strobe effects, empty floor showcase framing, telephoto compression flattening, even overhead illumination without color temperature gradient, circular bokeh, digital clarity."
+    },
+    {
+      "num": "04",
+      "name": "Refinery Morning",
+      "text": "Reynaldo Villalobos, Urban Cowboy 1980, 35mm Panavision anamorphic 2.35:1, Eastman Kodak 5247 100T [inferred], Movielab Hollywood. Texas Gulf Coast petrochemical refinery exterior — available daylight only, zero practical sources, zero supplemental light. Hard direct noon sun at 5500–6000K: unfiltered, no correction, no warming filter — 5247 tungsten-balanced stock under full daylight reads as neutral-to-slightly-cool, skin and clothing slightly desaturated, sun-bleached. Hard-edged cast shadows from overhead sun cutting across pipe infrastructure, no fill modification. Anamorphic horizontal compression turning industrial pipe runs, valve manifolds, and scaffolding into receding geometric fields — parallel pipe lines compressing into dense formal abstraction. Near-infinite depth of field at high stop (T8–T11) — no bokeh anywhere in the preset, every plane resolved. Workers in hard hats and work gloves, grimy clothing.",
+      "neg": "Golden-hour warmth, hero cinematography of industrial spaces, bokeh of any kind, saturated blue sky, backlit silhouette glamour, clean architectural photography, green environmental overtones, post-production color grading stylization, warm filtration, practical light sources of any kind."
+    },
+    {
+      "num": "05",
+      "name": "Trailer Light",
+      "text": "Reynaldo Villalobos, Urban Cowboy 1980, 35mm Panavision anamorphic 2.35:1, Eastman Kodak 5247 100T [inferred], Movielab Hollywood. Working-class mobile home interior — enclosed tungsten at 2800–3200K bouncing off wood-paneled walls and returning as muddy orange-brown rather than clean amber; the warmth is trapped and degraded by cheap surfaces that absorb rather than reflect. Low ceiling compression: overall dark but with flat, unflattering wrap light with no romance in the shadows. Doorframes as primary anamorphic compositional strategy — interior door openings dividing the 2.35:1 frame into zones. Domestic practical inventory: table lamp with fabric shade (2800K), kitchen ceiling pendant (bare tungsten 3000K), refrigerator interior bulb (cool 4000K counterpoint), television screen (blue-white 6500K spike). Wood panel grain, linoleum, floral wallpaper, formica countertop as surface vocabulary. Medium grain throughout — underexposed but not pushed, dull rather than dramatic.",
+      "neg": "Real estate photography warmth, lifestyle magazine interiors, art-directed set dressing, hero lighting on faces, saturated colors, wide-open spacious feel, window-lit editorial beauty, period-nostalgia glamorization, clean tungsten amber without surface degradation, sharp digital rendering."
+    },
+    {
+      "num": "06",
+      "name": "Beer Sign Portrait",
+      "text": "Reynaldo Villalobos, Urban Cowboy 1980, 35mm Panavision anamorphic 2.35:1, Eastman Kodak 5247 100T [inferred], Movielab Hollywood. Close anamorphic portrait at bar-rail proximity — single identifiable practical key source at close range, 2800–3400K, direction always traceable to a specific fixture: bar-mounted tungsten, illuminated Coors beer light-box functioning as overhead practical soft box, or rigged bounce just off-frame. One-side-lit portrait logic consistent across all sub-variants: lit cheekbone and jaw catching the key, shadow side held in near-black under hat brim, ratio ranging from 2:1 (soft) to 5:1 (hard, deeply shadowed). Hat brim cutting a hard geometric top edge across the lit zone. Background neon and bar fixtures dissolving into wide horizontal oval smears — not circular bokeh, flat anamorphic ovals — Coors pink-magenta and Budweiser red as color atmosphere. 5247 medium grain on skin in shadow zones; highlight side of face fully detailed, no clipping.",
+      "neg": "Studio portrait lighting, split-light theatrical drama, beauty dish, rim-lit hero look, clean background separation, editorial skin smoothing, cold color temperature, circular bokeh, overly saturated neon color-gel effect, posed and aware-of-camera quality."
+    },
+    {
+      "num": "07",
+      "name": "Lot Night",
+      "text": "Reynaldo Villalobos, Urban Cowboy 1980, 35mm Panavision anamorphic 2.35:1, Eastman Kodak 5247 100T [inferred], Movielab Hollywood. Texas exterior night — blue-black dominant, no warm fill of any kind, no ambient. Light interrupts darkness rather than fills it: sodium vapor streetlights (sickly yellow-orange at approximately 2200K equivalent, desaturated — not clean tungsten amber), mercury vapor lot floods (cool blue-white, overhead, hard, creating visible light cones through humid Texas air), neon signage as the only saturated color events (red canopy strip, Gilley's cool blue-white neon). Near-total shadow crush with isolated specular islands: car chrome, pickup rooflines, wet asphalt, and aluminum trailer skin catching point sources as hard-edged bright islands with no gradient. 5247 at maximum grain push — shadow zones show color grain separation, irregular clumping, slight green-magenta shift in darkest zones. Anamorphic horizontal compression turning parking lots into endless vehicle-field landscapes. Late 1970s Texas vehicle vocabulary: Ford F-series pickups, domestic sedans, muscle cars.",
+      "neg": "Blue-shift moonlit cinematic night, overly designed night photography, backlit hero framing, clean digital noise-free night rendering, orange-teal grading, artificial fog machines, motivated beam effects, warm overall temperature, any camera-proximate practical source."
+    },
+    {
+      "num": "08",
+      "name": "Pam's World",
+      "text": "Reynaldo Villalobos, Urban Cowboy 1980, 35mm Panavision anamorphic 2.35:1, Eastman Kodak 5247 100T [inferred], Movielab Hollywood. Interior space of relative economic comfort — the sharpest visual class contrast the film makes. Cool-neutral to warm-neutral range, 3200–4500K, never pushed into amber, never allowed to go dirty. Defining light source: full-height window with white sheer curtain, exterior daylight diffused to a large soft cool key at 4000–5500K — clean shadow neutrals rather than the brown-amber shadows of the trailer. Secondary anchor: pleated fabric table lamp on stepped acrylic base at approximately 3000K hitting clean plaster walls rather than wood paneling, returning controlled warm rather than degraded orange-brown. Crystal decanters on bar cart functioning as light-refracting foreground micro-practicals. Houston skyline at dusk through floor-to-ceiling glass curtain wall. Finest grain register in the pack — stock at optimal exposure throughout. Anamorphic negative space: deliberate empty horizontal zone as compositional element.",
+      "neg": "Luxury real estate photography, aspirational lifestyle staging, high-key glamour, saturated magazine-cover palette, editorial fashion lighting, crisp digital sharpness, expressionist contrast, wood paneling, any degraded or muddy tungsten bounce."
+    },
+    {
+      "num": "09",
+      "name": "Open Texas",
+      "text": "Reynaldo Villalobos, Urban Cowboy 1980, 35mm Panavision anamorphic 2.35:1, Eastman Kodak 5247 100T [inferred], Movielab Hollywood. Texas Gulf Coast flatland exterior — available sky light only, zero practicals, zero supplemental sources. The sky is the source: flat overcast or open diffuse conditions at 5000–7500K depending on cloud cover, no directional light, no cast shadows. Near-monochromatic palette: blue-grey sky, desaturated green crop rows, bleached tan road and dirt — color muted by Texas humidity haze. Dust trail as primary atmospheric event — white-grey particulate lit by ambient sky from all directions simultaneously, glowing against dark agricultural ground as a soft self-luminous horizontal plume. Anamorphic horizontal field lines: crop rows, highway lanes, power lines receding to low-horizon vanishing points. Human and vehicle elements small within frame, occupying less than 5% of frame area — landscape is the subject, people are incident. Late 1970s Ford F-series pickup as the primary vehicle element. No golden hour, no magic hour — flat working light that refuses to romanticize.",
+      "neg": "Golden-hour beauty cinematography, saturated landscape painting, telephoto compressed horizon, drone distortion, National Geographic lushness, green pastoral tones, dramatic weather, stylized dust-storm atmosphere, film-poster composition, any motivated or practical light source, bokeh of any kind."
+    }
+  ],
+  "layers": [
+    {
+      "letter": "A",
+      "name": "Camera negative",
+      "desc": "Widest latitude, finest grain",
+      "text": "Processing: Camera negative register — widest latitude, finest grain structure, most open shadows. Optimal exposure visible in interior daylight and refinery exteriors. Color: tungsten-balanced stock — interiors render amber-correct, full daylight reads slightly cool-blue without correction. Maximum shadow detail, highlights fully controlled, grain fine and even.",
+      "neg": "No contrast push, no shadow crush, no color grading, no stylization, no noise reduction, no sharpening."
+    },
+    {
+      "letter": "B",
+      "name": "Movielab print",
+      "desc": "Standard theatrical release",
+      "text": "Processing: Movielab Hollywood release print — moderate contrast increase over negative, slight shadow crush, grain structure more visible, mid-tones compressed. Soft edges and corners consistent with Movielab release print characteristics. The standard exhibition register of the film as projected in theaters in 1980.",
+      "neg": "No clean digital transfer, no modern restoration, no noise reduction, no sharpening, no HDR, no Dolby Vision grade."
+    },
+    {
+      "letter": "C",
+      "name": "Telecine",
+      "desc": "HBO and VHS transfer, 1981–1985",
+      "text": "Processing: Telecine transfer for early home video and cable broadcast — further contrast compression, shadow detail lost, highlights rolled off. The warm amber of Gilley's interiors shifts toward orange. Grain structure aliased into video noise character. Two textures fighting each other — film grain and video softness simultaneously. The version most people encountered on HBO and VHS, 1981–1985.",
+      "neg": "No clean digital image, no modern transfer, no 4K restoration, no sharp detail, no Blu-ray quality."
+    },
+    {
+      "letter": "D",
+      "name": "Broadcast transfer",
+      "desc": "Late-70s compression, analog cable",
+      "text": "Processing: Full late-70s broadcast compression — color temperature pushed warmer, shadow detail largely absent, contrast compressed to broadcast-safe levels. Color saturation compressed further, reds and skin tones bleed slightly at edges. The most visually compressed version — readable as memory of the film rather than the film itself. The version someone caught accidentally on cable and never forgot.",
+      "neg": "No clean image, no sharp detail, no modern transfer, no film grain without video noise, no pure blacks, no saturated color, no HDR, no digital clarity of any kind."
+    }
+  ]
+}
 
