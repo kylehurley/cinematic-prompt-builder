@@ -1,0 +1,36 @@
+{
+  "packs": [
+    {
+      "id": "to-live-and-die",
+      "slug": "01-to-live-and-die",
+      "title": "To Live and Die in L.A.",
+      "meta": "DP: Robby Müller · 1985",
+      "free": true,
+      "available": true
+    },
+    {
+      "id": "p02",
+      "slug": "02-placeholder",
+      "title": "Film Pack 02",
+      "meta": "coming soon",
+      "free": false,
+      "available": false
+    },
+    {
+      "id": "p03",
+      "slug": "03-placeholder",
+      "title": "Film Pack 03",
+      "meta": "coming soon",
+      "free": false,
+      "available": false
+    },
+    {
+      "id": "p04",
+      "slug": "04-placeholder",
+      "title": "Film Pack 04",
+      "meta": "coming soon",
+      "free": false,
+      "available": false
+    }
+  ]
+}

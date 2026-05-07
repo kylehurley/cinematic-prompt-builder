@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unlocked — Cinematic Prompt Builder</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Titillium+Web:wght@600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #080808;
+  --text: #ede8df;
+  --text2: #8a8580;
+  --text3: #484442;
+  --amber: #A77F49;
+  --amber2: #C49050;
+  --border: rgba(255,255,255,0.08);
+  --mono: 'DM Mono', monospace;
+  --sans: 'DM Sans', sans-serif;
+  --title: 'Titillium Web', sans-serif;
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.card {
+  text-align: center;
+  max-width: 480px;
+}
+.check {
+  width: 48px;
+  height: 48px;
+  border: 1.5px solid var(--amber);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  color: var(--amber);
+}
+.title {
+  font-family: var(--title);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1rem;
+  letter-spacing: 0.01em;
+}
+.desc {
+  font-size: 15px;
+  color: var(--text2);
+  font-weight: 300;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+.btn {
+  display: inline-block;
+  padding: 14px 2.5rem;
+  background: var(--amber);
+  border: none;
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1a0e00;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.btn:hover { background: var(--amber2); }
+.fine {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text3);
+  margin-top: 1.5rem;
+  letter-spacing: 0.04em;
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="check">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M4 10l4.5 4.5L16 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <h1 class="title">You're unlocked.</h1>
+  <p class="desc">All current and future Cinematic Prompt Packs are now available to you. Welcome to the library.</p>
+  <a href="/" class="btn" id="return-btn">Open the builder</a>
+  <p class="fine" id="status-msg">Setting up your access...</p>
+</div>
+
+<script>
+// Set the unlock token in localStorage
+try {
+  localStorage.setItem('cpb_unlocked', 'true');
+  document.getElementById('status-msg').textContent = 'Access confirmed. This browser is unlocked.';
+} catch(e) {
+  document.getElementById('status-msg').textContent = 'Could not save access — please enable localStorage in your browser.';
+}
+
+// Update return button href to go back to the builder root
+const btn = document.getElementById('return-btn');
+// If deployed at a subpath on GitHub Pages, adjust accordingly
+const base = window.location.origin + window.location.pathname.replace('success.html', '');
+btn.href = base;
+</script>
+</body>
+</html>
