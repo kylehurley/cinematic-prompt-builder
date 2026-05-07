@@ -9,12 +9,12 @@
       "available": true
     },
     {
-      "id": "p02",
-      "slug": "02-placeholder",
-      "title": "Film Pack 02",
-      "meta": "coming soon",
+      "id": "urban-cowboy",
+      "slug": "02-urban-cowboy",
+      "title": "Urban Cowboy",
+      "meta": "DP: Reynaldo Villalobos · 1980",
       "free": false,
-      "available": false
+      "available": true
     },
     {
       "id": "p03",
