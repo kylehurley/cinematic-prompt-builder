@@ -216,10 +216,10 @@ body::before {
 
 .see-all-chevron {
   display: inline-block;
+  flex-shrink: 0;
   transition: transform 0.28s cubic-bezier(.4,0,.2,1);
-  font-size: 12px;
-  line-height: 0.8;
-  margin-top: 1px;
+  vertical-align: middle;
+  margin-top: -1px;
 }
 
 .see-all-chevron.rotated { transform: rotate(180deg); }
@@ -283,7 +283,7 @@ body::before {
 .pack-dropdown {
   position: absolute;
   top: calc(100% - 1.25rem);
-  left: 0;
+  left: var(--gutter);
   right: 0;
   background: #0d0d0d;
   border: 1px solid #2e2318;
@@ -762,6 +762,7 @@ body::before {
   .film-row-vdivider { display: none; }
   .film-info { padding: 2.25rem 0 0.75rem; }
   .pack-selector { width: 100%; padding: 1rem 0 1.5rem; }
+  .pack-dropdown { left: 0; }
   .film-writeup { flex-direction: column; }
   .film-writeup-divider { display: none; }
   .film-writeup-text { flex: none; width: 100%; }
@@ -819,7 +820,7 @@ const UNLOCK_KEY = 'cpb_unlocked';
     <div class="pack-selector" id="pack-selector-root">
       <div class="pack-selector-header">
         <span class="pack-selector-label">Select film</span>
-        <button class="see-all-btn" id="see-all-btn">See all <span class="see-all-chevron" id="see-all-chevron">⌄</span></button>
+        <button class="see-all-btn" id="see-all-btn">See all <svg class="see-all-chevron" id="see-all-chevron" width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L4 4L7 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
       <div class="pack-cards" id="pack-cards">
         <!-- Built from packs-index.json -->
