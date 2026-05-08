@@ -862,6 +862,7 @@ function buildGrid(pack) {
   const cols = pack.frames.columns || 7;
   const mobileCols = pack.frames.mobileColumns || 3;
   grid.style.gridTemplateColumns = 'repeat(' + cols + ', 1fr)';
+  const ratio = pack.frames.frameRatio || '16/10';
   grid.dataset.cols = cols;
   grid.dataset.mobileCols = mobileCols;
 
@@ -870,6 +871,7 @@ function buildGrid(pack) {
   for (let i = 0; i < pack.frames.count; i++) {
     const frame = document.createElement('div');
     frame.className = 'img-frame';
+    frame.style.aspectRatio = ratio;
     const img = document.createElement('img');
     img.src = thumbs[i];
     img.alt = 'Frame ' + (i + 1);
