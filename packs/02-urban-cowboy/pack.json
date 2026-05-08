@@ -4,7 +4,7 @@
   "year": "1980",
   "director": "James Bridges",
   "dp": "Reynaldo Villalobos",
-  "tech": "Kodak 5247 100T [inferred] · Panavision anamorphic · 35mm anamorphic 2.35:1",
+  "tech": "Eastman Kodak 5247 100T [inferred] · Panavision anamorphic 2x squeeze · 35mm anamorphic 2.35:1 · Movielab Hollywood",
   "writeup": "Urban Cowboy (1980), shot by first-time feature DP Reynaldo Villalobos with operator John Toll, merges studio anamorphic scope with working-class semi-documentary naturalism in a way that no other film of its period attempts. Framed in 35mm Panavision anamorphic at 2.35:1 and processed at Movielab Hollywood, the film uses its wide format not for epic grandeur but for social density and geographic truth — the layered horizontal crowd of a real honky-tonk, couples in relational tension across a wide frame, human figures dwarfed by flat Texas land and Gulf Coast refinery scale. Villalobos' stated philosophy — making light look like there is no light — is visible in every frame: Gilley's interiors driven entirely by practicals and beer-sign spill at 2800–3400K; trailer scenes lit by the actual lamps that came with the unit; refinery exteriors in raw noon sun with no fill, no correction, no modification. The palette runs on amber tungsten, nicotine brown, denim blue, sickly sodium-vapor orange, and sun-washed ochre — earthy, worn-in, and regionally specific.",
   "frames": {
     "count": 42,
@@ -13,7 +13,8 @@
     "ext": ".jpg",
     "pad": 2,
     "columns": 6,
-    "mobileColumns": 2
+    "mobileColumns": 2,
+    "frameRatio": "235/100"
   },
   "gallery": [
     { "placeholder": "Example images — coming soon" },
@@ -107,4 +108,3 @@
     }
   ]
 }
-
