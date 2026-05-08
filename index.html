@@ -146,9 +146,10 @@ body::before {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
   gap: 8px;
   padding: 2.25rem 0 1.25rem var(--gutter);
+  position: relative;
+  min-width: 0;
 }
 
 .film-title {
@@ -179,6 +180,13 @@ body::before {
   line-height: 1.6;
 }
 
+.pack-selector-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .pack-selector-label {
   font-family: var(--mono);
   font-size: 9px;
@@ -187,12 +195,58 @@ body::before {
   color: var(--text3);
 }
 
-.pack-cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+.see-all-btn {
+  display: none;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #c8872a;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.15s;
+  line-height: 1;
+}
+
+.see-all-btn:hover { opacity: 0.7; }
+
+.see-all-chevron {
+  display: inline-block;
+  transition: transform 0.28s cubic-bezier(.4,0,.2,1);
+  font-size: 12px;
+  line-height: 0.8;
+  margin-top: 1px;
+}
+
+.see-all-chevron.rotated { transform: rotate(180deg); }
+
+/* Scroll row */
+.pack-scroll-row {
+  display: flex;
+  flex-direction: row;
   gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
   width: 100%;
 }
+
+.pack-scroll-row::-webkit-scrollbar { display: none; }
+
+/* Pack cards */
+.pack-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  width: 100%;
+}
+
+.pack-cards::-webkit-scrollbar { display: none; }
 
 .pack-card {
   background: var(--bg3);
@@ -202,6 +256,8 @@ body::before {
   cursor: pointer;
   transition: border-color 0.15s;
   position: relative;
+  flex-shrink: 0;
+  width: 155px;
 }
 
 .pack-card:hover { border-color: var(--border2); }
@@ -222,6 +278,74 @@ body::before {
 
 .pack-card.locked .pack-lock { display: block; }
 .pack-card.locked.active .pack-lock { color: var(--amber); }
+
+/* See-all dropdown */
+.pack-dropdown {
+  position: absolute;
+  top: calc(100% - 1.25rem);
+  left: 0;
+  right: 0;
+  background: #0d0d0d;
+  border: 1px solid #2e2318;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.7);
+  z-index: 100;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: max-height 0.38s cubic-bezier(.4,0,.2,1), opacity 0.25s cubic-bezier(.4,0,.2,1);
+}
+
+.pack-dropdown.open {
+  max-height: 500px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.pack-dropdown-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid #191919;
+  transition: background 0.12s;
+  gap: 12px;
+}
+
+.pack-dropdown-row:last-child { border-bottom: none; }
+.pack-dropdown-row:hover { background: #141410; }
+.pack-dropdown-row.active { background: #1e1809; }
+.pack-dropdown-row.unavailable { opacity: 0.38; cursor: default; pointer-events: none; }
+
+.ddr-left { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.ddr-title { font-size: 13px; font-weight: 400; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ddr-meta { font-family: var(--mono); font-size: 10px; color: var(--text2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.ddr-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.ddr-arrow {
+  color: var(--amber);
+  font-size: 13px;
+  opacity: 0;
+  transition: opacity 0.12s;
+}
+
+.pack-dropdown-row:hover .ddr-arrow,
+.pack-dropdown-row.active .ddr-arrow { opacity: 1; }
+
+.ddr-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text3);
+  letter-spacing: 0.06em;
+}
 
 /* Image grid */
 .grid-section {
@@ -638,7 +762,6 @@ body::before {
   .film-row-vdivider { display: none; }
   .film-info { padding: 2.25rem 0 0.75rem; }
   .pack-selector { width: 100%; padding: 1rem 0 1.5rem; }
-  .pack-cards { grid-template-columns: repeat(2, 1fr); }
   .film-writeup { flex-direction: column; }
   .film-writeup-divider { display: none; }
   .film-writeup-text { flex: none; width: 100%; }
@@ -658,7 +781,6 @@ body::before {
   :root { --gutter: 1.25rem; }
   .img-grid { grid-template-columns: repeat(3, 1fr); }
   .grid-expand { display: none !important; }
-  .pack-cards { grid-template-columns: repeat(2, 1fr); }
   .film-writeup-text { padding: 2rem var(--gutter); }
 }
 </style>
@@ -694,11 +816,15 @@ const UNLOCK_KEY = 'cpb_unlocked';
       <p class="film-tech" id="film-tech"></p>
     </div>
     <div class="film-row-vdivider"></div>
-    <div class="pack-selector">
-      <span class="pack-selector-label">Select film</span>
+    <div class="pack-selector" id="pack-selector-root">
+      <div class="pack-selector-header">
+        <span class="pack-selector-label">Select film</span>
+        <button class="see-all-btn" id="see-all-btn">See all <span class="see-all-chevron" id="see-all-chevron">⌄</span></button>
+      </div>
       <div class="pack-cards" id="pack-cards">
         <!-- Built from packs-index.json -->
       </div>
+      <div class="pack-dropdown" id="pack-dropdown"></div>
     </div>
   </div>
 
@@ -1154,22 +1280,58 @@ async function init() {
   try {
     const res = await fetch('packs-index.json');
     const data = await res.json();
-    const cards = document.getElementById('pack-cards');
-    cards.innerHTML = '';
+    const scrollRow = document.getElementById('pack-cards');
+    const dropdown = document.getElementById('pack-dropdown');
+    const seeAllBtn = document.getElementById('see-all-btn');
+    const chevron = document.getElementById('see-all-chevron');
 
-    // Set purchase button href
+    scrollRow.innerHTML = '';
+    dropdown.innerHTML = '';
+
     document.getElementById('purchase-btn').href = STRIPE_PAYMENT_LINK;
 
+    let dropdownOpen = false;
+
+    // ── Set active state across both scroll row + dropdown ──
+    function setActivePack(packId) {
+      document.querySelectorAll('.pack-card').forEach(c => {
+        c.classList.toggle('active', c.dataset.id === packId);
+      });
+      document.querySelectorAll('.pack-dropdown-row').forEach(r => {
+        r.classList.toggle('active', r.dataset.id === packId);
+      });
+    }
+
+    function closeDropdown() {
+      if (!dropdownOpen) return;
+      dropdownOpen = false;
+      dropdown.classList.remove('open');
+      chevron.classList.remove('rotated');
+    }
+
+    seeAllBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      dropdownOpen = !dropdownOpen;
+      dropdown.classList.toggle('open', dropdownOpen);
+      chevron.classList.toggle('rotated', dropdownOpen);
+    });
+
+    document.addEventListener('click', e => {
+      const root = document.getElementById('pack-selector-root');
+      if (root && !root.contains(e.target)) closeDropdown();
+    });
+
     data.packs.forEach((pack, idx) => {
-      const card = document.createElement('div');
       const isLocked = !pack.free && !isUnlocked;
       const isUnavailable = !pack.available;
+      const num = String(idx + 1).padStart(2, '0');
 
+      // ── Scroll card ──
+      const card = document.createElement('div');
       card.className = 'pack-card' +
         (isUnavailable ? ' unavailable' : '') +
         (isLocked && pack.available ? ' locked' : '');
       card.dataset.id = pack.id;
-
       card.innerHTML =
         '<div class="pack-card-title">' + pack.title + '</div>' +
         '<div class="pack-card-meta">' + pack.meta + '</div>' +
@@ -1177,20 +1339,50 @@ async function init() {
 
       if (!isUnavailable) {
         card.addEventListener('click', () => {
-          document.querySelectorAll('.pack-card').forEach(c => c.classList.remove('active'));
-          card.classList.add('active');
+          setActivePack(pack.id);
           loadPack(pack);
         });
       }
+      scrollRow.appendChild(card);
 
-      cards.appendChild(card);
+      // ── Dropdown row ──
+      const row = document.createElement('div');
+      row.className = 'pack-dropdown-row' + (isUnavailable ? ' unavailable' : '');
+      row.dataset.id = pack.id;
+      row.innerHTML =
+        '<div class="ddr-left">' +
+          '<div class="ddr-title">' + pack.title + '</div>' +
+          '<div class="ddr-meta">' + pack.meta + '</div>' +
+        '</div>' +
+        '<div class="ddr-right">' +
+          '<span class="ddr-arrow">→</span>' +
+          '<span class="ddr-num">' + num + '</span>' +
+        '</div>';
+
+      if (!isUnavailable) {
+        row.addEventListener('click', () => {
+          setActivePack(pack.id);
+          loadPack(pack);
+          closeDropdown();
+        });
+      }
+      dropdown.appendChild(row);
 
       // Auto-load first pack
       if (idx === 0) {
-        card.classList.add('active');
+        setActivePack(pack.id);
         loadPack(pack);
       }
     });
+
+    // ── Show/hide SEE ALL based on whether scroll row overflows ──
+    function checkScrollable() {
+      const scrollable = scrollRow.scrollWidth > scrollRow.clientWidth + 2;
+      seeAllBtn.style.display = scrollable ? 'flex' : 'none';
+    }
+
+    checkScrollable();
+    new ResizeObserver(checkScrollable).observe(scrollRow);
 
   } catch(e) {
     console.error('Failed to load packs index:', e);
