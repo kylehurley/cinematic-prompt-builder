@@ -287,7 +287,7 @@ body::before {
   left: var(--gutter);
   right: 0;
   background: #0d0d0d;
-  border: 1px solid #2e2318;
+  border: 1px solid var(--border);
   border-radius: 8px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.7);
   z-index: 100;
@@ -1304,6 +1304,11 @@ async function init() {
       document.querySelectorAll('.pack-dropdown-row').forEach(r => {
         r.classList.toggle('active', r.dataset.id === packId);
       });
+      // Scroll selected card into view when row is overflowing
+      const activeCard = scrollRow.querySelector('[data-id="' + packId + '"]');
+      if (activeCard && scrollRow.scrollWidth > scrollRow.clientWidth + 2) {
+        scrollRow.scrollTo({ left: activeCard.offsetLeft, behavior: 'smooth' });
+      }
     }
 
     function closeDropdown() {
