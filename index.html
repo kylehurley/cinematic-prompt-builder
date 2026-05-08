@@ -1124,6 +1124,11 @@ function showPurchaseWall() {
 async function loadPack(meta) {
   currentPackMeta = meta;
 
+  // Close expand overlay if open
+  gridExpand.classList.remove('visible', 'hiding');
+  gridExpandImg.src = '';
+  expandIndex = -1;
+
   // Update film info
   // Pack data comes from pack.json — show loading state first
   document.getElementById('film-title').textContent = meta.title;
