@@ -1,1 +1,151 @@
-
+{
+  "pack": {
+    "id": "pack_03",
+    "title": "Near Dark",
+    "year": 1987,
+    "dp": "Adam Greenberg",
+    "director": "Kathryn Bigelow",
+    "genre_tag": "vampire-western",
+    "format": "35mm spherical 1.85:1",
+    "camera": "Arriflex [body unverified]",
+    "lenses": "Arriflex/Zeiss primes [set unverified]",
+    "stock": "Kodak 35mm tungsten negative [unverified; 5294 400T period-probable]",
+    "lab": "CFI, Hollywood",
+    "prints": "Technicolor, Hollywood",
+    "camera_supply": "Otto Nemenz International",
+    "spec_string": "Kodak 35mm tungsten negative [unverified; 5294 400T period-probable] · Arriflex [body unverified] · Arriflex/Zeiss primes [set unverified] · 35mm spherical 1.85:1 · CFI lab, Technicolor prints",
+    "base_prompt_prefix": "Adam Greenberg, Near Dark 1987, 35mm spherical 1.85:1, Arriflex, Kodak 35mm tungsten negative [period-probable].",
+    "writeup": {
+      "visual_philosophy": "Near Dark is a 1987 vampire-western hybrid photographed by Adam Greenberg in spherical 35mm — a choice that roots its mythology in the flat American West rather than the elongated shadows of European gothic. Greenberg's documented working philosophy, extrapolated most clearly from his ASC work on The Terminator, was naturalistic-looking but heavily controlled: light shaped to serve character as mythic figure, not environment as mood machine. On Near Dark, that philosophy produces a specific, identifiable grammar — deep velvety blacks that photochemically refuse shadow detail, hazy magic-hour burnouts where dawn functions as a lethal weapon, a dusty desaturated earth-tone palette punctuated only by neon, fire, and blood, and a blue-night / amber-dawn polarity that operates as emotional and narrative logic. Kathryn Bigelow systematically stripped every gothic marker: no bats, no crosses, no mirrors, no fangs, no ornate architecture. What remains is a horror film that looks like a revisionist western and reads like a romance built on danger.",
+      "usage": "This pack replicates that look for AI image generation. The nine scene presets target the film's distinct visual situations — open highway darkness, neon bar interior, hostile dawn, motel room practical lamp, predatory stalk, golden-field dusk, gang portrait, empty oilfield day, intimate close portrait — each encoding Greenberg's light logic, color temperature choices, grain behavior, and compositional grammar. The four processing layers calibrate how much of the photochemical chain to apply: from the full latitude of the camera negative through the baked decisions of a CFI/Technicolor theatrical print to the lifted blacks of telecine through VHS-era degradation. Use the negative prompts aggressively — the primary failure mode in AI generation is defaulting to either digitally-clean horror lighting or lush gothic atmosphere, both of which are the inverse of what Near Dark actually looks like.",
+      "reference_note": "Best current HD reference: Filmjuwelen (German) Blu-ray. Avoid the 2009 Lionsgate U.S. Blu-ray (DNR, soft, weak black levels). No definitive restoration confirmed as of May 2026."
+    }
+  },
+  "scene_presets": [
+    {
+      "id": "preset_01",
+      "name": "Open Highway Night",
+      "scene_type": "wide exterior night / highway",
+      "positive_prompt": "Adam Greenberg, Near Dark 1987, 35mm spherical 1.85:1, Arriflex, Kodak 35mm tungsten negative [period-probable]. Wide exterior night, Oklahoma flatland two-lane blacktop, headlights as the only practical light source cutting through dust haze, deep velvety black sky with no atmospheric glow or city spill, road surface catching amber-orange headlight falloff, surrounding land consumed by photochemical darkness, grain heavy in shadow zones, horizon line held low, anti-gothic open American emptiness, no moonlight fill, no recoverable shadow detail, slight halation around headlight sources from fast stock, naturalistic but heavily shaped light that refuses to romanticize the dark.",
+      "negative_prompt": "digital clean blacks, moonlit blue fill, HDR shadow recovery, urban glow, gothic atmosphere, fog machine haze, studio setup feel, glamour lighting, star-field detail, modern color grade, neon-noir glow, horror atmosphere"
+    },
+    {
+      "id": "preset_02",
+      "name": "Bar Massacre",
+      "scene_type": "interior neon / violence",
+      "positive_prompt": "Adam Greenberg, Near Dark 1987, 35mm spherical 1.85:1, Arriflex, Kodak 35mm tungsten negative [period-probable]. Interior roadhouse bar, practical neon signage as primary color source — red and blue-green neon casting hard isolated pools across floor and faces, warm tungsten practicals in background creating amber fills, deep shadow zones between light pools with no detail recovery, fire and flame erupting as punctuation in the controlled palette, figures silhouetted or half-lit by neon cross-light, smashed glass catching point-source specular reflections, blood reading near-black against dusty floor, heavy grain in underexposed areas, smoke threading through neon beams, photochemical neon bloom without digital glow, neon saturation cutting through an otherwise desaturated interior.",
+      "negative_prompt": "clean studio lighting, modern horror color grade, gothic chandeliers, even ambient fill, HDR neon bloom, digital glow effects, contemporary bar design, glamour hero lighting, clean shadow separation, polished surfaces"
+    },
+    {
+      "id": "preset_03",
+      "name": "Dawn Scramble",
+      "scene_type": "magic hour exterior / hostile dawn",
+      "positive_prompt": "Adam Greenberg, Near Dark 1987, 35mm spherical 1.85:1, Arriflex, Kodak 35mm tungsten negative [period-probable]. Magic hour exterior dawn, flat Oklahoma highway, daylight arriving as a hostile overexposed wall of amber-to-white sky, foreground still in blue-black transition as night recedes, characters in frantic silhouette against the blinding horizon burn, fast tungsten stock blown into irrecoverable highlight clipping at the sun angle, blue lingering in the near-ground shadow zone, color polarity shift from cold night to burning orange-white dawn operating as literal threat in-frame, dusty road surface catching first horizontal light, grain exaggerated in the transition zone between deep shadow and blown highlight, speed and danger encoded in the exposure choice.",
+      "negative_prompt": "golden hour beauty lighting, HDR sky detail recovery, romantic sunrise, landscape photography, controlled exposure, digital tone mapping, soft warmth, lush color palette, slow tranquil dawn, travel photography"
+    },
+    {
+      "id": "preset_04",
+      "name": "Motel Room Night",
+      "scene_type": "interior night / practical lamp",
+      "positive_prompt": "Adam Greenberg, Near Dark 1987, 35mm spherical 1.85:1, Arriflex, Kodak 35mm tungsten negative [period-probable]. Interior motel room night, single practical bedside lamp as key casting warm tungsten amber on nearest surfaces, blue-black darkness filling the room beyond lamp range, window suggesting exterior night as a secondary cool blue source, worn American motel materials — polyester bedspread, water-stained ceiling, thin curtain — catching light as texture not glamour, figures in intimate proximity with split-light: one side warm amber, one side lost in deep shadow, grain prominent in blue-darkness areas away from the lamp, no fill card, no ambient recovery, photochemical blacks eating the room edges, refuge that is also a trap.",
+      "negative_prompt": "hotel photography lighting, clean ambient, beauty key, romantic candlelight, HDR interior, modern color grade, production design showcase, lifestyle photography, moody editorial glamour, soft romantic fill"
+    },
+    {
+      "id": "preset_05",
+      "name": "The Stalk",
+      "scene_type": "exterior night / predator movement",
+      "positive_prompt": "Adam Greenberg, Near Dark 1987, 35mm spherical 1.85:1, Arriflex, Kodak 35mm tungsten negative [period-probable]. Exterior night, figure moving through the edge of a rural American non-place — parking lot perimeter, gas station forecourt, roadside drainage ditch — deep blue overall color temperature from fast tungsten stock in near-moonless environment, single distant practical (fluorescent forecourt, lit window) providing directionality without fill, figure partially dissolved into surrounding darkness with only face or raised hands reading against the black, grain heavy in shadow zones, low to mid-angle framing that keeps the figure as part of the darkness rather than against it, wide foreground black emphasizing rural isolation, predator logic encoded in the exposure choice.",
+      "negative_prompt": "backlit hero reveal, blue moonlight beauty, clear ambient fill, theatrical monster lighting, dramatic silhouette, lens flare, gothic shadows, modern color grade, high-contrast fashion noir, horror jump-scare staging"
+    },
+    {
+      "id": "preset_06",
+      "name": "Golden Field Dusk",
+      "scene_type": "wide exterior / magic hour romance",
+      "positive_prompt": "Adam Greenberg, Near Dark 1987, 35mm spherical 1.85:1, Arriflex, Kodak 35mm tungsten negative [period-probable]. Wide exterior dusk, Oklahoma wheat or scrub grassland, magic hour amber-gold raking light across flat terrain, sky going orange to cold blue above the horizon, figures small against an enormous sky reading as mythic outlaw-western silhouettes, the warmth of the light in direct aesthetic opposition to the nature of the figures, fast tungsten stock at magic hour pushing amber channel slightly warm, grain visible in sky gradient gradations, dusty desaturated earth tones in the landscape rather than lush green, horizon line dominant and low, the romantic western grammar in conscious service of dangerous content.",
+      "negative_prompt": "saturated nature photography, HDR sky detail, green lush landscape, romantic couple framing, landscape tourism, digital smoothness, golden hour beauty, clean contemporary color, pastoral warmth, advertisement"
+    },
+    {
+      "id": "preset_07",
+      "name": "Gang Portrait Night",
+      "scene_type": "group exterior night / family",
+      "positive_prompt": "Adam Greenberg, Near Dark 1987, 35mm spherical 1.85:1, Arriflex, Kodak 35mm tungsten negative [period-probable]. Group exterior night, the vampire family as American outlaw unit, vehicle headlights or distant fire as hard practical source creating rim and three-quarter effects across multiple faces, deep blacks consuming the spaces between figures, each face a separate pocket of light in overall darkness, dusty road or open field completely dissolved into background black, low angle making figures read as physically imposing mythic presences, grain heavy in the dark intervals between lit faces, amber-warm on lit skin, deep blue in shadow zones, group cohesion through shared darkness rather than controlled fill, no gothic costuming, no ornament, American road-family mythology.",
+      "negative_prompt": "studio group portrait, even ambient fill, horror ensemble staging, glamour beauty lighting, modern color grade, HDR night, gothic atmosphere, lit background, fashion editorial, polished group shot"
+    },
+    {
+      "id": "preset_08",
+      "name": "Oilfield Day Exterior",
+      "scene_type": "wide exterior day / hostile daylight",
+      "positive_prompt": "Adam Greenberg, Near Dark 1987, 35mm spherical 1.85:1, Arriflex, Kodak 35mm tungsten negative [period-probable]. Wide daytime exterior, Texas or Oklahoma oilfield or open flatland, harsh midday sun bleaching the sky toward white, parched and desaturated earth — pale brown, tan, grey-green scrub — no lush color anywhere in frame, hostile daylight as thematic inversion of night-danger, fast tungsten stock in daylight pushing toward cyan-blue in overexposed sky channel, earth tones robbed of saturation, wide empty establishing shot emphasizing displacement from normal American day-life, grain visible in sky gradients, overexposed sky edges eating into the landscape horizon, the American West as dangerous and indifferent in any light.",
+      "negative_prompt": "golden hour warmth, saturated nature, beautiful landscape, HDR sky detail, lush color, modern color grade, tourism photography, green vegetation, twilight beauty, oil industry promotional photography"
+    },
+    {
+      "id": "preset_09",
+      "name": "Intimate Portrait",
+      "scene_type": "close-up / single practical source",
+      "positive_prompt": "Adam Greenberg, Near Dark 1987, 35mm spherical 1.85:1, Arriflex, Kodak 35mm tungsten negative [period-probable]. Tight close-up, interior or transitional space — car interior, bar booth, doorway — subject lit by a single practical source with strong directionality, half the face lost in deep photochemical shadow with no detail recovery, mixed color temperature when applicable: warm tungsten key one side, cool ambient blue on the shadow side, fast tungsten stock rendering skin texture with visible grain and physical three-dimensionality rather than digital smoothness, eyes catching the directional practical source, no beauty key, no hair light, no fill card, slight halation on the bright side of the face from the fast stock, the darkness earning the light.",
+      "negative_prompt": "beauty lighting, three-point studio setup, glamour key, clean skin rendering, HDR clarity, modern color grade, fashion portrait, cosmetic soft fill, editorial beauty, evenly lit face, commercial portrait"
+    }
+  ],
+  "processing_layers": [
+    {
+      "id": "layer_01",
+      "order": 1,
+      "name": "Camera Negative",
+      "subtitle": "Kodak 35mm tungsten, circa 1986",
+      "grade": "cleanest",
+      "description": "Maximum latitude. Shadow zones hold partially recoverable information. Highlight rolloff is gradual rather than hard-clipping. Film grain structured — fine and tight in midtones, coarser and more irregular in deep shadows. Slight blue-green color crossover in deep blacks from the tungsten emulsion base. Fast tungsten stock in daylight exterior conditions pushes toward cyan-blue in the sky channel. Skin tones warm and dimensioned in tungsten-lit environments. This is the full information state before any photochemical timing choices commit the look — the negative as latent potential rather than finished film.",
+      "prompt_modifier": "full photographic latitude, gradual highlight rolloff, structured fine grain, slight blue-green shadow crossover, tungsten emulsion warmth in skin"
+    },
+    {
+      "id": "layer_02",
+      "order": 2,
+      "name": "Theatrical Release Print",
+      "subtitle": "CFI / Technicolor, 1987",
+      "grade": "baked",
+      "description": "CFI lab printer-light timing and Technicolor print stock (Kodak 5384 period-probable) bake in the color decisions that define the film's visual identity. Blacks deepen and lose shadow detail relative to the negative — the velvety quality is a print characteristic, not a negative one. Highlight structure compresses toward clipping at the extremes. The blue-night / amber-dawn polarity becomes more pronounced and photochemically committed. Each generational step — negative to interpositive to internegative to release print — adds its own grain layer; the total grain on screen is cumulative. This is the film as a 1987 cinema audience saw it: the decisions are made and irreversible.",
+      "prompt_modifier": "deep velvety blacks with no shadow recovery, compressed highlights, cumulative photochemical grain, blue-night amber-dawn polarity locked in, dusty desaturated palette photochemically committed"
+    },
+    {
+      "id": "layer_03",
+      "order": 3,
+      "name": "Telecine / Early Video",
+      "subtitle": "circa late 1980s",
+      "grade": "mediated",
+      "description": "Transferred to tape (BetaSP or 1\" C-format probable) via 1980s flying-spot or Rank Cintel telecine. Black levels lift slightly compared to theatrical projection — some shadow detail partially recoverable versus the release print. Color may read cooler or flatter depending on the transfer operator's corrections. Scan sharpening introduces video-texture edge artifacts distinct from film grain. The grain pattern shifts character — more luminance-channel video noise, less structured photochemical grain. The velvety theatrical blacks become grayish-dark on period CRT monitors. This is the version that fed VHS duplication: pre-degraded, already technologically mediated.",
+      "prompt_modifier": "slightly lifted blacks, cooler flatter color, video-texture edge sharpening, luminance noise replacing film grain, grayish shadows, 1980s tape transfer quality"
+    },
+    {
+      "id": "layer_04",
+      "order": 4,
+      "name": "Broadcast / Degraded",
+      "subtitle": "VHS-era home video",
+      "grade": "dirtiest",
+      "description": "VHS duplication or broadcast transmission of the telecine master. Color information compressed; chroma bleeding slightly at high-saturation edges — neon signs, fire accents. Black levels variable by playback equipment. The nuance in the dusty desaturated palette collapses — careful differentiation between shades of pale earth flattens into undifferentiated midrange. Structured film grain replaced by random video noise in dark areas. Magic-hour burnouts clip to pure white more readily. Neon accent colors bloom with chroma fringing. The film's photographic sophistication is legible but stripped of subtlety — gritty 1980s horror VHS, which is both a degradation and its own distinct aesthetic register.",
+      "prompt_modifier": "VHS chroma compression, color bleeding at neon edges, blocked shadow noise, collapsed desaturated palette, clipping at burnouts, chroma fringing on neon, random video noise in darks, 1980s home video texture"
+    }
+  ],
+  "flags": [
+    { "item": "DP: Adam Greenberg", "status": "verified", "note": "IMDb, TCM, AFI Catalog" },
+    { "item": "Format: 35mm spherical 1.85:1", "status": "verified", "note": "IMDb technical specs" },
+    { "item": "Camera brand: Arriflex", "status": "verified", "note": "IMDb / Otto Nemenz supply confirmed" },
+    { "item": "Camera body (specific)", "status": "unverified", "note": "Exact body not in public record" },
+    { "item": "Lens set (specific)", "status": "unverified", "note": "Arriflex/Zeiss inferred from camera supply; set not documented" },
+    { "item": "Camera/lens supply: Otto Nemenz International", "status": "verified", "note": "IMDb company credits" },
+    { "item": "Lab: CFI, Hollywood", "status": "verified", "note": "IMDb company credits" },
+    { "item": "Prints: Technicolor, Hollywood", "status": "verified", "note": "IMDb company credits" },
+    { "item": "Film stock (specific)", "status": "unverified", "note": "No reliable public source names the stock; 5294 400T is period-probable, not confirmed" },
+    { "item": "Push/pull processing", "status": "unverified", "note": "No public source confirms or denies" },
+    { "item": "Look: deep velvety blacks", "status": "verified", "note": "TCM description, home-video reviews" },
+    { "item": "Dusty desaturated palette", "status": "verified", "note": "Multiple independent reviews confirm" },
+    { "item": "Blue nights / amber dawn polarity", "status": "verified", "note": "Contemporary and home-video reviewers" },
+    { "item": "Anti-gothic visual philosophy", "status": "verified", "note": "Bigelow interviews; no bats/crosses/mirrors confirmed" },
+    { "item": "Neon/fire/blood as accent color", "status": "verified", "note": "Film observation; contemporary review descriptions" },
+    { "item": "Smoke/haze/backlight use", "status": "verified", "note": "TCM, reviewer descriptions" },
+    { "item": "Greenberg: naturalistic-but-shaped philosophy", "status": "inferred", "note": "Extrapolated from ASC Terminator interview; no Near Dark-specific Greenberg interview found" },
+    { "item": "Print stock: Kodak 5384", "status": "inferred", "note": "Period-standard for 35mm theatrical release; not film-specific" },
+    { "item": "Telecine format (BetaSP/1\")", "status": "inferred", "note": "Period-standard for late 1980s home-video mastering" },
+    { "item": "2009 Lionsgate Blu-ray issues (DNR, soft)", "status": "verified", "note": "Blu-ray.com and AVForums reviews confirm" },
+    { "item": "Filmjuwelen disc as best current HD reference", "status": "inferred", "note": "Comparative reviews favor it; not an authoritative restoration" },
+    { "item": "Synapse 4K restoration", "status": "unverified", "note": "Apr 1 2026 post confirmed as April Fools; treat as unannounced until street-dated" }
+  ]
+}
