@@ -21,8 +21,8 @@
       "slug": "03-near-dark",
       "title": "Near Dark",
       "meta": "DP: Adam Greenberg · 1987",
-      "free": false,
-      "available": false
+      "free": true,
+      "available": true
     },
     {
       "id": "p04",
