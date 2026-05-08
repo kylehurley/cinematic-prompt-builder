@@ -146,9 +146,9 @@ body::before {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-end;
   gap: 8px;
-  padding: 2.25rem 0 1.25rem;
+  padding: 2.25rem 0 1.25rem var(--gutter);
 }
 
 .film-title {
@@ -425,13 +425,13 @@ body::before {
   background: transparent;
   border: none;
   border-radius: 0;
-  padding: 1.5rem;
+  padding: 1.5rem 1.5rem 1.5rem var(--gutter);
   display: flex;
   flex-direction: column;
+  gap: 1rem;
   position: sticky;
   top: calc(var(--nav-h) + 1.5rem);
   align-self: stretch;
-  padding-left: 1.5rem;
   padding-right: var(--gutter);
 }
 
@@ -859,7 +859,11 @@ function makeFrameUrls(frames) {
 function buildGrid(pack) {
   const grid = document.getElementById('img-grid');
   grid.innerHTML = '';
-  grid.style.gridTemplateColumns = 'repeat(' + (pack.frames.columns || 7) + ', 1fr)';
+  const cols = pack.frames.columns || 7;
+  const mobileCols = pack.frames.mobileColumns || 3;
+  grid.style.gridTemplateColumns = 'repeat(' + cols + ', 1fr)';
+  grid.dataset.cols = cols;
+  grid.dataset.mobileCols = mobileCols;
 
   const { thumbs, fulls } = makeFrameUrls(pack.frames);
 
@@ -874,6 +878,7 @@ function buildGrid(pack) {
     frame.addEventListener('click', () => openExpand(fulls[i], i, fulls));
     grid.appendChild(frame);
   }
+  applyMobileGrid();
 }
 
 // ── BUILD GALLERY ──
@@ -1049,6 +1054,23 @@ async function loadPack(meta) {
     console.error('Failed to load pack:', e);
   }
 }
+
+function applyMobileGrid() {
+  const grid = document.getElementById('img-grid');
+  if (!grid) return;
+  if (window.innerWidth <= 480) {
+    const mobileCols = grid.dataset.mobileCols || 3;
+    grid.style.gridTemplateColumns = 'repeat(' + mobileCols + ', 1fr)';
+  } else if (window.innerWidth <= 900) {
+    // tablet — use pack's desktop columns but cap at 6
+    const cols = Math.min(parseInt(grid.dataset.cols || 7), 6);
+    grid.style.gridTemplateColumns = 'repeat(' + cols + ', 1fr)';
+  } else {
+    grid.style.gridTemplateColumns = 'repeat(' + (grid.dataset.cols || 7) + ', 1fr)';
+  }
+}
+
+window.addEventListener('resize', applyMobileGrid);
 
 // ── GENERATE ──
 const generateBtn = document.getElementById('generate-btn');
