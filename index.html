@@ -1307,7 +1307,8 @@ async function init() {
       // Scroll selected card into view when row is overflowing
       const activeCard = scrollRow.querySelector('[data-id="' + packId + '"]');
       if (activeCard && scrollRow.scrollWidth > scrollRow.clientWidth + 2) {
-        scrollRow.scrollTo({ left: activeCard.offsetLeft, behavior: 'smooth' });
+        const scrollTarget = activeCard.offsetLeft - scrollRow.offsetLeft;
+        scrollRow.scrollTo({ left: Math.max(0, scrollTarget), behavior: 'smooth' });
       }
     }
 
