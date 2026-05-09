@@ -1304,12 +1304,6 @@ async function init() {
       document.querySelectorAll('.pack-dropdown-row').forEach(r => {
         r.classList.toggle('active', r.dataset.id === packId);
       });
-      // Scroll selected card into view when row is overflowing
-      const activeCard = scrollRow.querySelector('[data-id="' + packId + '"]');
-      if (activeCard && scrollRow.scrollWidth > scrollRow.clientWidth + 2) {
-        const scrollTarget = activeCard.offsetLeft - scrollRow.offsetLeft;
-        scrollRow.scrollTo({ left: Math.max(0, scrollTarget), behavior: 'smooth' });
-      }
     }
 
     function closeDropdown() {
@@ -1374,6 +1368,12 @@ async function init() {
           setActivePack(pack.id);
           loadPack(pack);
           closeDropdown();
+          // Scroll the card into view in the scroll row
+          const activeCard = scrollRow.querySelector('[data-id="' + pack.id + '"]');
+          if (activeCard && scrollRow.scrollWidth > scrollRow.clientWidth + 2) {
+            const scrollTarget = activeCard.offsetLeft - scrollRow.offsetLeft;
+            scrollRow.scrollTo({ left: Math.max(0, scrollTarget), behavior: 'smooth' });
+          }
         });
       }
       dropdown.appendChild(row);
