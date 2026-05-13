@@ -25,12 +25,12 @@
       "available": true
     },
     {
-      "id": "p04",
-      "slug": "04-placeholder",
-      "title": "Film Pack 04",
-      "meta": "coming soon",
-      "free": false,
-      "available": false
+      "id": "outland",
+      "slug": "04-outland",
+      "title": "Outland",
+      "meta": "1981",
+      "free": true,
+      "available": true
     }
   ]
 }
