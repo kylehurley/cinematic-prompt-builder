@@ -1,1 +1,117 @@
+{
+  "id": "outland",
+  "title": "Outland",
+  "year": "1981",
+  "director": "Peter Hyams",
+  "dp": "Stephen Goldblatt",
+
+  "tech": "Kodak 5247 100T · Panavision C/E-series anamorphic · 35mm anamorphic 2.35:1",
+
+  "writeup": "Outland (1981) carries Stephen Goldblatt's cinematography credit, but Peter Hyams — who directed — controlled main-unit photography himself, with Goldblatt running second-unit, effects, and the film's elaborate Introvision in-camera compositing sequences. Hyams wanted a western on a hostile frontier, not a space opera: the visual grammar is industrial realism, shot on Eastman 5247 through Panavision C-series anamorphic lenses on controlled soundstage sets at Pinewood. Large portions of every frame are consumed by blackness, with on-set smoke shaping light into visible directional beams. The palette is grimy industrial neutrals punctuated by saturated events: sodium-orange recreation rooms, phosphor-green CRT text, green greenhouse light, blood red. Processed at Technicolor Hollywood.",
+
+  "frames": {
+    "count": 42,
+    "thumbBase": "https://res.cloudinary.com/doqxbgft6/image/upload/w_400,q_auto,f_auto/v1778679868/Film_Pack_004_img_",
+    "fullBase": "https://res.cloudinary.com/doqxbgft6/image/upload/v1778679868/Film_Pack_004_img_",
+    "ext": ".jpg",
+    "pad": 2,
+    "columns": 6,
+    "mobileColumns": 2,
+    "frameRatio": "240/100"
+  },
+
+  "gallery": [
+    { "placeholder": "Example images — coming soon" },
+    { "placeholder": "Example 02" },
+    { "placeholder": "Example 03" }
+  ],
+
+  "presets": [
+    {
+      "num": "01",
+      "name": "Colony Corridor",
+      "text": "Peter Hyams / Stephen Goldblatt, Outland 1981, 35mm anamorphic 2.35:1, Panavision Panaflex, Eastman 5247 100T. Interior station corridor, Pinewood soundstage, symmetrical architectural geometry — converging parallel walls, ceiling-mounted fluorescent strip arrays receding to a single vanishing point, deep shadow masses consuming both lateral edges and ceiling zones. Cool overhead fluorescent key at 4500–5500K, flat and directionless, creating institutional illumination on corridor surfaces with no ambient warmth. Industrial surface vocabulary: painted steel panels, riveted bulkhead seams, cable conduit runs, sealed pressure hatches, non-slip floor grating. Distant figures at the vanishing point as silhouettes or near-silhouettes. Anamorphic horizontal compression turning parallel corridor lines into dense geometric recession. On-set atmospheric smoke threading through the overhead fluorescent arrays as visible haze columns. 5247 grain visible in shadow zones; fluorescent midtones relatively controlled. The darkness is composed, not accidental.",
+      "neg": "Sleek futurist corridor, glossy NASA showroom lighting, clean ambient fill, digital clinical sharpness, warm tungsten interior, colorful wayfinding design, 2001 white luxury, any sense of hospitality or operational comfort, HDR shadow detail, modern sci-fi aesthetics, well-staffed busy corridor."
+    },
+    {
+      "num": "02",
+      "name": "Recreation Room",
+      "text": "Peter Hyams / Stephen Goldblatt, Outland 1981, 35mm anamorphic 2.35:1, Panavision Panaflex, Eastman 5247 100T. Interior colony recreation space — bar zone, sleep quarters, or leisure room — overhead sodium-vapor or tungsten practical fixtures at 2200–2800K casting orange-amber wash across industrial wall surfaces. The warmth is oppressive rather than welcoming: amber-orange ceiling light bouncing off steel and laminate as degraded orange-brown, not clean hotel amber. Shadow zones at floor level and corners consuming spatial detail. Human figures in near-exhausted or passive poses — seated, reclined, inert — absorbing orange light on exposed skin. 5247 inside sodium-orange pushing skin tones toward yellow-orange with slight color crossover in shadow midtones. Anamorphic horizontal geometry emphasizing the lateral isolation of figures within an institutional space. Grain heavier in darker zones. The warmth reads as heat-lamp function, not comfort.",
+      "neg": "Warm cozy bar atmosphere, lifestyle hospitality photography, romantic candlelight amber, clean luxury interior, hotel room warmth, social enjoyment, engaged faces, sharp digital rendering, colorful decor, any suggestion of leisure as pleasure rather than institutional biological maintenance."
+    },
+    {
+      "num": "03",
+      "name": "Greenhouse Level",
+      "text": "Peter Hyams / Stephen Goldblatt, Outland 1981, 35mm anamorphic 2.35:1, Panavision Panaflex, Eastman 5247 100T. Interior hydroponic or greenhouse level — tall vertical plant columns in narrow industrial aisles, overhead grow-light arrays at cool green-white 5000–6000K casting a phosphorescent dominant across leaf surfaces, floor grating, and metal grow-frame infrastructure. Green wavelength dominance reads as biological but hostile: life as industrial output, not nature. Metal frame structures receding into shadow at mid-distance, plant life giving way to infrastructure in the upper frame zone. Floor-level moisture or condensation catching reflected green light as faint specular pools. 5247 in green-dominant environment: slight cyan hue shift in shadow zones, foliage detail resolved in center frame, losing to shadow at lateral edges. Atmospheric moisture or smoke threading through the overhead light arrays. Anamorphic wide view allowing multiple row depths simultaneously — a human figure, if present, dwarfed by the industrial-scale botanical architecture.",
+      "neg": "Beautiful botanical garden, lush nature photography, warm sunlight through leaves, pastoral serenity, aspirational vertical farm design, soft-focus plant macro, natural daylight, golden hour warmth, cozy horticultural space, any sense of nurturing, natural beauty, or human-scaled comfort."
+    },
+    {
+      "num": "04",
+      "name": "Monitor Bank",
+      "text": "Peter Hyams / Stephen Goldblatt, Outland 1981, 35mm anamorphic 2.35:1, Panavision Panaflex, Eastman 5247 100T. Security or communications control room interior — wall-mounted banks of period CRT monitors as the primary light source, phosphor-green or blue-white screen glow at 5500–7000K casting cool uplight on operator faces. Screen glow as key: face illuminated from below or below-left by the monitor stack, surrounding room falling to deep shadow with no ambient fill. Multiple screens showing surveillance footage, text readouts, and system status — phosphor-green characters blooming slightly on period CRT glass. Operator in silhouette or near-silhouette against the screen array. Room periphery consumed by darkness. 5247 rendering screen phosphor as slightly blown in the highlight zone, heavy grain in surrounding shadow. Anamorphic horizontal field allowing the full monitor array to read at institutional scale. The surveillance apparatus is larger and more legible than the person operating it.",
+      "neg": "Clean modern LCD or LED displays, blue-LED mission control grandeur, sharp high-resolution screen imagery, heroic operations center, colorful contemporary UI design, warm overhead lighting, editorial tech-glamour, bright ambient fill, any suggestion of digital modernity or contemporary display technology."
+    },
+    {
+      "num": "05",
+      "name": "Pressure Suit",
+      "text": "Peter Hyams / Stephen Goldblatt, Outland 1981, 35mm anamorphic 2.35:1, Panavision Panaflex, Eastman 5247 100T. Exterior or airlock suit-staging area — figures in full industrial pressure suits, yellow or orange-yellow as dominant hue, illuminated by harsh directional practical sources at 4000–5000K creating hard-edged shadows on suit surfaces and visor geometry. Suit material reading as matte industrial rubber and rigid molded plastic, not sleek aerospace fabric. Visor glass catching point-source reflections as small hard specular islands against the surrounding darkness. Multiple suited figures in group working posture — no clear hero framing, workers not astronauts. Background: heavy industrial airlock infrastructure — pressure seals, cable bundles, emergency signage, warning stripe. 5247 rendering yellow suit color with slight green shift at shadow transitions. Anamorphic horizontal compression allowing a full working group to read simultaneously. On-set smoke or atmospheric haze thickening the staging area air. Physical weight and labor implied by posture and scale.",
+      "neg": "Sleek space opera suit design, heroic astronaut framing, glossy visor reflection drama, NASA ceremonial staging, clean white space suit aesthetic, dramatic backlit hero silhouette, futurist design glamour, cosmic wonder, CGI render quality, Marvel or blockbuster space aesthetic, any sense of aspiration or adventure."
+    },
+    {
+      "num": "06",
+      "name": "Mess Hall",
+      "text": "Peter Hyams / Stephen Goldblatt, Outland 1981, 35mm anamorphic 2.35:1, Panavision Panaflex, Eastman 5247 100T. Colony cafeteria or mess hall — large institutional interior, high overhead fluorescent arrays at 4500–5500K providing flat directionless ambient illumination across tray tables, workers in uniform coveralls, and institutional food service infrastructure. The lighting is forensic: no shadows worth naming, no warmth, no hero positioning. Background crowd of workers eating in near-silence, occupying anamorphic horizontal depth in multiple layers simultaneously. Foreground tray, plastic utensils, and service counter catching flat overhead. Walls and ceiling reading as painted industrial steel — off-white graying toward institutional green or beige. 5247 at moderate exposure producing fine-to-medium grain in the midtone-heavy environment. Anamorphic frame width emphasizing lateral spread rather than individual depth. Faces neutral and exhausted — labor as biological maintenance.",
+      "neg": "Warm restaurant atmosphere, social dining energy, cinematic food photography, hero character dining scene, editorial lifestyle imagery, natural window light, vibrant crowd energy, aspirational cafeteria design, any suggestion of leisure as experience, community, or pleasure."
+    },
+    {
+      "num": "07",
+      "name": "Shadow Corridor",
+      "text": "Peter Hyams / Stephen Goldblatt, Outland 1981, 35mm anamorphic 2.35:1, Panavision Panaflex, Eastman 5247 100T. Interior service corridor in low or night-cycle light — 80–90% of the frame consumed by photochemical blackness, deliberate and absolute. A single distant practical light source (ceiling emergency strip, pressure hatch window, or distant panel) at the vanishing point provides directionality without ambient fill. The darkness is not naturalistic failure — it is composed. A figure moving through the shadow zone, face and body lost to near-silhouette, partially resolved against the distant light. On-set smoke threading through the beam at the vanishing point as a visible atmospheric column. 5247 at maximum shadow grain — dark zones showing color grain separation, irregular clumping, slight green-magenta shift in the deepest exposures. Anamorphic horizontal recession exaggerating the corridor's dimensional depth. Pursuit, hiding, or approach encoded in the exposure logic.",
+      "neg": "Lifted shadows of any kind, ambient fill, blue moonlight effect, dramatic thriller lighting, backlit hero reveal, clean digital night mode, HDR shadow recovery, any practical source that reveals spatial orientation, safety, or navigability."
+    },
+    {
+      "num": "08",
+      "name": "Incident Scene",
+      "text": "Peter Hyams / Stephen Goldblatt, Outland 1981, 35mm anamorphic 2.35:1, Panavision Panaflex, Eastman 5247 100T. Wide anamorphic view of a violent aftermath — figure on industrial floor, blood as the only saturated color event in an otherwise desaturated institutional palette. Overhead fluorescent arrays at 4500–5500K providing flat, forensic, unromantic illumination: the light does not serve the drama, it simply continues. Blood reading as saturated red-crimson against pale tile or industrial grating — 5247's red channel rendering it over-rich under fluorescent, giving the color an unnatural density against the surrounding neutrals. Institutional surface inventory: white or pale tile, painted steel panels, stenciled warning text, safety stripe, heavy industrial door frame. Additional figures standing in background at institutional distance, not reacting heroically. Grain controlled and uniform in the flat-lit exposure. Anamorphic frame allowing the institutional context to dominate: the violence is a small event in a large indifferent space.",
+      "neg": "Dramatic violence lighting, chiaroscuro blood-and-shadow aesthetics, gothic horror staging, backlit action aftermath, blue crime-scene lighting, slow-motion implication, horror genre framing, any aestheticization of violence, any lighting choice that transforms industrial fact into cinematic spectacle."
+    },
+    {
+      "num": "09",
+      "name": "Extreme Portrait",
+      "text": "Peter Hyams / Stephen Goldblatt, Outland 1981, 35mm anamorphic 2.35:1, Panavision Panaflex, Eastman 5247 100T. Extreme anamorphic close-up, face nearly filling the horizontal frame — subject lit by a practical ring or halo source (pressure suit visor rim, console light ring, emergency beacon collar) creating a circle of hard specular points around the face perimeter while the face interior receives soft, low-level ambient. Or: single hard practical source at close range, strongly directional, 80% shadow-side loss with no fill recovery. 5247 rendering skin with full physical texture — pores, stubble, sweat, fatigue lines — without digital smoothing. Eyes catching the nearest specular point as a single hard catchlight. The face as evidence of labor, fear, or determination rather than as portrait subject. Background: absolute black or near-black, no environmental context readable. Anamorphic horizontal oval bokeh on any background light points. Shadow-side grain heavy and color-separated.",
+      "neg": "Beauty portrait lighting, three-point studio setup, glamour key, clean commercial skin, cosmetic retouching, editorial soft-fill, warm hero lighting, charismatic subject framing, heroic confidence in expression, celebrity portrait style, any lighting that flatters or beautifies rather than documents."
+    }
+  ],
+
+  "layers": [
+    {
+      "letter": "A",
+      "name": "Camera Negative",
+      "desc": "Eastman 5247, full latitude",
+      "text": "Processing: Camera negative register, Eastman Color Negative II 5247, 100 EI tungsten, standard ECN-2 processing. Maximum latitude — shadow zones partially recoverable, highlight rolloff gradual before clipping. Grain structure relatively fine for the era at box speed: tight and organized in midtones, coarser and more irregular in deep shadow zones. Tungsten-balanced: interior sources render color-accurate, the rare daylight exterior reads slightly cool-blue without correction. This is the full information state before any photochemical timing or print generation commits the contrast and color. Hyams' deliberate shadow massing is visible at this level as architectural intent rather than print artifact — the darkness is designed, not baked.",
+      "neg": "No contrast push, no shadow crush, no color grading, no stylization, no noise reduction, no sharpening, no baked-in print contrast."
+    },
+    {
+      "letter": "B",
+      "name": "Theatrical Release Print",
+      "desc": "Technicolor Hollywood, 1981",
+      "text": "Processing: Theatrical release print, Technicolor Hollywood laboratory, photochemical printer-light timing, probable Eastman print stock 5381 or 5383 (the 5384 replaced these in 1982, making these the period-correct stocks for a 1981 release). Blacks deepen and lose shadow detail relative to the negative — the film's heavy shadow masses become fully committed and non-recoverable at this stage. Highlight structure compresses toward clipping at bright practical sources. Each duplication generation — negative to interpositive to internegative to release print — adds cumulative grain; total grain at exhibition is heavier than the negative alone. The blue-black versus sodium-orange color opposition becomes more photochemically baked-in. This is the film as a 1981 cinema audience experienced it.",
+      "neg": "No clean digital transfer, no modern restoration, no noise reduction, no sharpening, no HDR shadow or highlight recovery, no digital color grade."
+    },
+    {
+      "letter": "C",
+      "name": "Telecine",
+      "desc": "Film to tape, HBO / early cable",
+      "text": "Processing: Telecine transfer, film-to-tape, likely Rank Cintel flying-spot scanner, BetaSP or 1-inch C-format master, CRT monitor color space, early 1980s. Black levels lift slightly compared to theatrical projection — some shadow detail partially reappears that was crushed in the release print. Color reads cooler or flatter depending on transfer operator decisions, sometimes pushing the sodium-orange interiors toward a warmer, flatter video amber. Scan sharpening introduces video-edge texture artifacts layered on top of film grain. Grain structure shifts character: more luminance-channel video noise, less structured photochemical grain. Hyams' velvety shadow masses become grayish-dark on period CRT monitors. This is the version most audiences encountered on HBO or early cable, 1981–1985.",
+      "neg": "No clean digital image, no modern transfer, no 4K restoration, no theatrical shadow depth, no structured photochemical grain, no HDR, no sharp anamorphic edge character."
+    },
+    {
+      "letter": "D",
+      "name": "Broadcast Transfer",
+      "desc": "VHS-era home video, degraded",
+      "text": "Processing: VHS duplication or cable broadcast of the telecine master, early-to-mid 1980s home video. Color information compressed; chroma bleeding at edges of high-saturation events — green greenhouse panels, sodium-orange recreation rooms, blood red, phosphor-green CRT text. Black levels variable by playback equipment; the controlled shadow masses read as undifferentiated dark gray rather than photochemical black. The careful differentiation between shades of industrial gray, dirty white, and institutional beige collapses into a flat compressed midrange. Structured film grain replaced by random video noise in dark areas. Anamorphic edge character — the C-series mild corner softness, horizontal compression — survives only partially. Gritty early-1980s industrial sci-fi on a fuzzy television.",
+      "neg": "No clean image, no sharp anamorphic detail, no modern transfer, no pure photochemical blacks, no digital clarity, no uncompressed color, no structured photochemical grain, no HDR of any kind."
+    }
+  ]
+}
 
